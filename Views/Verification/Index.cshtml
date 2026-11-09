@@ -1,0 +1,22 @@
+@model VerificationRequest
+@{ ViewData["Title"] = L["UniversityVerification"]; var user = (ApplicationUser)ViewBag.User; }
+<div class="container page-narrow">
+    <div class="form-heading"><span class="eyebrow blue">@L["StudentTrust"]</span><h1>@L["UniversityVerification"]</h1><p>@L["VerificationIntro"]</p></div>
+    <div class="verification-steps"><div class="active"><span>1</span><strong>@L["StepUniversityEmail"]</strong></div><div><span>2</span><strong>@L["StepConfirmEmail"]</strong></div><div><span>3</span><strong>@L["MarketplaceAccess"]</strong></div></div>
+    @if (user.VerificationStatus == VerificationStatus.Approved)
+    {
+        <div class="status-card success"><h2>@L["VerificationApproved"]</h2><p>@L["VerificationApprovedText"]</p><a class="btn btn-primary" asp-controller="Listings" asp-action="Create">@L["CreateListing"]</a></div>
+    }
+    else if (Model?.Status == VerificationStatus.Pending)
+    {
+        <div class="status-card pending"><h2>@L["VerificationPending"]</h2><p>@L["VerificationPendingText"]</p><a class="btn btn-outline-primary" asp-action="Document" asp-route-id="@Model.Id" target="_blank">@L["ViewSubmittedDocument"]</a></div>
+    }
+    else if (user.VerificationStatus == VerificationStatus.Rejected)
+    {
+        <div class="status-card rejected"><h2>@L["VerificationRejected"]</h2><p>@(string.IsNullOrWhiteSpace(Model?.ReviewNotes) ? L["VerificationRejectedText"].Value : Model.ReviewNotes)</p></div>
+    }
+    else
+    {
+        <div class="status-card pending"><h2>@L["VerificationPending"]</h2><p>@L["VerificationEmailRequired"]</p></div>
+    }
+</div>

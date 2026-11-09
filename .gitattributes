@@ -1,0 +1,13 @@
+# Store text with LF in the repository so Windows, macOS and Linux teammates get clean diffs.
+* text=auto
+
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.webp binary
+*.ico binary
+*.mp4 binary
+*.woff binary
+*.woff2 binary
+*.ttf binary
+*.eot binary

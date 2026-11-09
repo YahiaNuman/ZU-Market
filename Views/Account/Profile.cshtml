@@ -1,0 +1,4 @@
+@model ProfileViewModel
+@{ ViewData["Title"] = L["Profile"]; }
+<div class="container page-narrow"><div class="form-heading"><h1>@L["Profile"]</h1><p>@L["ProfileText"]</p></div><form method="post" class="form-card"><div asp-validation-summary="ModelOnly" class="validation-summary"></div><div class="field"><label asp-for="FullName">@L["FullName"]</label><input asp-for="FullName" /></div><div class="field"><label asp-for="College">@L["College"]</label><input asp-for="College" /></div><div class="field"><label>@L["UniversityEmail"]</label><input value="@Model.Email" disabled /></div><div class="field"><label>@L["UniversityId"]</label><input value="@Model.UniversityId" disabled /></div><div class="field"><label asp-for="PhoneNumber">@L["PhoneOptional"]</label><input asp-for="PhoneNumber" /></div><button class="btn btn-primary" type="submit">@L["SaveChanges"]</button></form></div>
+@section Scripts { <partial name="_ValidationScriptsPartial" /> }

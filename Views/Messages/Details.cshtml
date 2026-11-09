@@ -1,0 +1,35 @@
+﻿@model Conversation
+@{
+    ViewData["Title"] = L["Conversation"];
+    var userId = User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)!.Value;
+    var other = Model.BuyerId == userId ? Model.Seller : Model.Buyer;
+}
+<div class="container chat-shell" data-conversation-id="@Model.Id" data-user-id="@userId" data-connecting="@L["ChatConnecting"]" data-connected="@L["ChatConnected"]" data-disconnected="@L["ChatDisconnected"]" data-send-failed="@L["ChatSendFailed"]">
+    <header class="chat-header">
+        <a asp-action="Index" aria-label="@L["Back"]"><span aria-hidden="true">&#8592;</span></a>
+        <span class="avatar">@other!.FullName[0]</span>
+        <div><h1>@other.FullName</h1><a asp-controller="Listings" asp-action="Details" asp-route-id="@Model.ListingId">@Model.Listing!.Title</a></div>
+        <aside class="chat-presence"><span data-chat-status data-state="connecting">@L["ChatConnecting"]</span><button class="link-button" type="button" data-chat-retry hidden>@L["Retry"]</button></aside>
+    </header>
+    <div class="chat-messages" data-chat-messages aria-live="polite">
+        @if (!Model.Messages.Any())
+        {
+            <div class="chat-empty" data-chat-empty>@L["StartConversation"]</div>
+        }
+        @foreach (var message in Model.Messages.OrderBy(x => x.SentAtUtc))
+        {
+            <div class="message @(message.SenderId == userId ? "mine" : "theirs")" data-message-id="@message.Id"><p>@message.Body</p><time datetime="@message.SentAtUtc.ToString("O")">@message.SentAtUtc.ToLocalTime().ToString("g")</time></div>
+        }
+    </div>
+    <div class="chat-error" data-chat-error role="alert" hidden></div>
+    <form asp-action="Send" asp-route-id="@Model.Id" method="post" class="chat-compose" data-chat-form>
+        <label class="visually-hidden" for="Body">@L["Message"]</label>
+        <textarea id="Body" name="Body" maxlength="2000" required placeholder="@L["TypeMessage"]"></textarea>
+        <button class="btn btn-primary" type="submit">@L["Send"]</button>
+    </form>
+</div>
+@section Scripts {
+    <script src="~/js/signalr-lite.js" asp-append-version="true"></script>
+    <script src="~/js/chat.js" asp-append-version="true"></script>
+}
+

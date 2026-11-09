@@ -1,0 +1,4 @@
+@model ChangePasswordViewModel
+@{ ViewData["Title"] = L["Settings"]; }
+<div class="container page-narrow"><div class="form-heading"><h1>@L["AccountSettings"]</h1><p>@L["ChangePasswordText"]</p></div><form method="post" class="form-card"><div asp-validation-summary="ModelOnly" class="validation-summary"></div><div class="field"><label asp-for="CurrentPassword">@L["CurrentPassword"]</label><input asp-for="CurrentPassword" autocomplete="current-password" /></div><div class="field"><label asp-for="NewPassword">@L["NewPassword"]</label><input asp-for="NewPassword" autocomplete="new-password" /></div><div class="field"><label asp-for="ConfirmPassword">@L["ConfirmPassword"]</label><input asp-for="ConfirmPassword" autocomplete="new-password" /></div><button class="btn btn-primary" type="submit">@L["ChangePassword"]</button></form></div>
+@section Scripts { <partial name="_ValidationScriptsPartial" /> }

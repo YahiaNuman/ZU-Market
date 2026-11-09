@@ -1,0 +1,71 @@
+# Local development stack. Start it with:  docker compose up --build
+# Then open http://localhost:8080
+#
+# The default passwords below are for this local stack only. Both published ports
+# are bound to 127.0.0.1, so they are not reachable from other machines.
+# Never use this file or these values for a real deployment.
+name: zumarket
+
+x-app-image: &app-image
+  image: zumarket-web:local
+  build:
+    context: .
+
+x-app-environment: &app-environment
+  ASPNETCORE_ENVIRONMENT: Development
+  ConnectionStrings__DefaultConnection: "Server=db,1433;Database=ZuMarketDb;User Id=sa;Password=${MSSQL_SA_PASSWORD:-ZuMarket_Dev_2026!};TrustServerCertificate=True;MultipleActiveResultSets=true"
+
+services:
+  db:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    # SQL Server has no ARM image; on Apple Silicon this runs through emulation.
+    platform: linux/amd64
+    environment:
+      ACCEPT_EULA: "Y"
+      MSSQL_PID: Developer
+      MSSQL_SA_PASSWORD: "${MSSQL_SA_PASSWORD:-ZuMarket_Dev_2026!}"
+    ports:
+      - "127.0.0.1:${DB_PORT:-14333}:1433"
+    volumes:
+      - db-data:/var/opt/mssql
+    healthcheck:
+      test: ["CMD-SHELL", "/opt/mssql-tools18/bin/sqlcmd -C -S localhost -U sa -P \"$$MSSQL_SA_PASSWORD\" -Q \"SELECT 1\" -b -o /dev/null"]
+      interval: 5s
+      timeout: 5s
+      retries: 40
+      start_period: 20s
+
+  # Applies EF Core migrations, which also create the database and the categories, then exits.
+  migrate:
+    <<: *app-image
+    command: ["--migrate-database"]
+    environment:
+      <<: *app-environment
+    depends_on:
+      db:
+        condition: service_healthy
+    restart: "no"
+
+  web:
+    <<: *app-image
+    environment:
+      <<: *app-environment
+      TZ: Asia/Amman
+      InitialAdmin__Email: "${ADMIN_EMAIL:-admin@zumarket.local}"
+      InitialAdmin__Password: "${ADMIN_PASSWORD:-Admin_Dev_2026!}"
+      InitialAdmin__FullName: "${ADMIN_NAME:-Local Admin}"
+      OpenAI__ApiKey: "${OPENAI_API_KEY:-}"
+    ports:
+      - "127.0.0.1:${WEB_PORT:-8080}:8080"
+    volumes:
+      - app-data:/app/App_Data
+    depends_on:
+      db:
+        condition: service_healthy
+      migrate:
+        condition: service_completed_successfully
+    restart: unless-stopped
+
+volumes:
+  db-data:
+  app-data:

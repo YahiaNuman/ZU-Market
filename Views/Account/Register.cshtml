@@ -1,0 +1,25 @@
+@model RegisterViewModel
+@inject ZuMarket.Services.IUniversityEmailPolicy UniversityEmail
+@{ ViewData["Title"] = L["Register"]; }
+<div class="container page-narrow">
+    <div class="form-heading">
+        <img class="page-brand-logo" src="~/images/brand/zu-market-logo.png" alt="@L["BrandLogoAlt"]" />
+        <span class="eyebrow blue">@L["JoinCommunity"]</span>
+        <h1>@L["CreateStudentAccount"]</h1>
+        <p>@L["RegistrationText"]</p>
+    </div>
+    <form method="post" class="form-card">
+        <div asp-validation-summary="ModelOnly" class="validation-summary"></div>
+        <div class="field"><label asp-for="FullName">@L["FullName"]</label><input asp-for="FullName" autocomplete="name" /><span asp-validation-for="FullName"></span></div>
+        <div class="field"><label asp-for="Email">@L["UniversityEmail"]</label><input asp-for="Email" autocomplete="email" />@if (UniversityEmail.IsConfigured) { <small>@L["EmailDomainHelp", UniversityEmail.DisplayDomains]</small> }<span asp-validation-for="Email"></span></div>
+        <div class="field-row">
+            <div class="field"><label asp-for="Password">@L["Password"]</label><input asp-for="Password" autocomplete="new-password" /><span asp-validation-for="Password"></span></div>
+            <div class="field"><label asp-for="ConfirmPassword">@L["ConfirmPassword"]</label><input asp-for="ConfirmPassword" autocomplete="new-password" /><span asp-validation-for="ConfirmPassword"></span></div>
+        </div>
+        <p class="password-help">@L["PasswordRequirements"]</p>
+        <label class="check-label terms-check"><input asp-for="AcceptTerms" /> <span>@L["IAgree"] <a asp-controller="Home" asp-action="Terms" target="_blank">@L["Terms"]</a></span></label>
+        <span asp-validation-for="AcceptTerms"></span>
+        <button class="btn btn-primary btn-lg w-100" type="submit">@L["CreateAccount"]</button>
+    </form>
+</div>
+@section Scripts { <partial name="_ValidationScriptsPartial" /> }

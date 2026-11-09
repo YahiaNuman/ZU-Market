@@ -1,0 +1,46 @@
+@model ListingFormViewModel
+@inject ZuMarket.Services.IListingDraftService Drafts
+@{
+    var categories = (IEnumerable<Category>)ViewBag.Categories;
+    var isNew = Model.Id is null;
+    // A failed submit returns here with the typed values, so the details must already be open.
+    var startAtPhoto = isNew && ViewData.ModelState.IsValid;
+    var aiDraft = isNew && Drafts.IsAvailable;
+}
+<div asp-validation-summary="ModelOnly" class="validation-summary"></div>
+<div class="upload-box@(isNew ? " listing-start" : "")" data-camera-root data-input-id="Photos" data-invalid-file="@L["InvalidImage"]" data-photo-count="@L["PhotoCountInvalid"]" data-max-files="6">
+    @if (isNew) { <svg class="icon upload-icon" aria-hidden="true"><use href="#i-camera" /></svg> }
+    <div><h3>@L["ListingPhotos"]</h3><p>@L["PhotoHelp"]</p></div>
+    <input asp-for="Photos" id="Photos" type="file" accept="image/jpeg,image/png,image/webp" multiple class="file-input" />
+    <div class="upload-actions"><label class="btn @(isNew ? "btn-primary" : "btn-outline-primary")" for="Photos">@L["ChooseFiles"]</label><button class="btn btn-outline-primary" type="button" data-camera-open>@L["UseCamera"]</button></div>
+    <div class="image-preview-grid" data-preview></div>
+    <p class="file-error" data-file-error role="alert"></p>
+    <span asp-validation-for="Photos"></span>
+    @if (aiDraft)
+    {
+        <div class="ai-draft" data-ai-draft-root data-url="@Url.Action("Draft", "Listings")" data-working="@L["AiDraftWorking"]" data-done="@L["AiDraftDone"]" data-not-recognized="@L["AiDraftNotRecognized"]" data-failed="@L["AiDraftFailed"]" data-limit="@L["AiDraftLimit"]">
+            <div class="ai-draft-progress"><span class="spinner-border spinner-border-sm" aria-hidden="true" data-ai-draft-spinner hidden></span><p class="ai-draft-status" data-ai-draft-status role="status"></p></div>
+            <button class="btn btn-outline-primary btn-sm" type="button" data-ai-draft hidden>@L["AiDraftButton"]</button>
+            <small>@L["AiDraftPrivacy"]</small>
+        </div>
+    }
+</div>
+<div class="camera-panel" data-camera-panel hidden>
+    <video data-camera-video autoplay playsinline></video><canvas data-camera-canvas hidden></canvas><p class="camera-error" data-camera-error role="alert"></p>
+    <div class="camera-actions"><button class="btn btn-primary" type="button" data-camera-capture>@L["Capture"]</button><button class="btn btn-outline-primary" type="button" data-camera-retake hidden>@L["Retake"]</button><button class="btn btn-success" type="button" data-camera-use hidden>@L["UsePhoto"]</button><button class="btn btn-light" type="button" data-camera-close>@L["Cancel"]</button></div>
+</div>
+<noscript><style>[data-listing-details][hidden]{display:block!important}</style></noscript>
+<div data-listing-details hidden="@startAtPhoto">
+    <div class="field"><label asp-for="Title">@L["Title"]</label><input asp-for="Title" autocomplete="off" /><span asp-validation-for="Title"></span></div>
+    <div class="field"><label asp-for="Description">@L["Description"]</label><textarea asp-for="Description" rows="6"></textarea><span asp-validation-for="Description"></span></div>
+    <div class="field-row">
+        <div class="field"><label asp-for="CategoryId">@L["Category"]</label><select asp-for="CategoryId" id="listing-category"><option value="">@L["SelectCategory"]</option>@foreach (var c in categories) { <option value="@c.Id">@L[c.Key]</option> }</select><span asp-validation-for="CategoryId"></span></div>
+        <div class="field"><label asp-for="Condition">@L["Condition"]</label><select asp-for="Condition"><option value="">@L["SelectCondition"]</option>@foreach (var condition in Enum.GetValues<ListingCondition>()) { <option value="@((int)condition)">@L[condition.ToString()]</option> }</select><span asp-validation-for="Condition"></span></div>
+    </div>
+    <div class="field-row">
+        <div class="field"><label asp-for="Price">@L["Price"]</label><div class="input-suffix"><input asp-for="Price" id="listing-price" inputmode="decimal" /><span>@L["JOD"]</span></div><span asp-validation-for="Price"></span></div>
+        <div class="field checkbox-field"><input asp-for="IsFree" id="listing-free" /><label asp-for="IsFree">@L["FreeListing"]</label></div>
+    </div>
+    <button class="btn btn-primary btn-lg w-100" type="submit">@L["SubmitForReview"]</button>
+    @if (isNew) { <p class="form-note">@L["ListingReviewNotice"]</p> }
+</div>

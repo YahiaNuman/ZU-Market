@@ -1,0 +1,29 @@
+@model IReadOnlyList<ModerationAction>
+@{ ViewData["Title"] = L["ModerationHistory"]; }
+<div class="container section">
+    <div class="section-heading"><div><h1>@L["ModerationHistory"]</h1><p>@L["ModerationHistoryText"]</p></div></div>
+    @if (Model.Count == 0)
+    {
+        <div class="empty-state"><h2>@L["NothingToReview"]</h2></div>
+    }
+    else
+    {
+        <div class="table-wrap">
+            <table>
+                <thead><tr><th>@L["Date"]</th><th>@L["Administrator"]</th><th>@L["Actions"]</th><th>@L["Target"]</th><th>@L["Notes"]</th></tr></thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td><time datetime="@item.CreatedAtUtc.ToString("O")">@item.CreatedAtUtc.ToLocalTime().ToString("g")</time></td>
+                            <td>@item.Administrator?.FullName</td>
+                            <td>@L[$"Action_{item.ActionType}"]</td>
+                            <td>@(item.Listing?.Title ?? item.TargetUser?.FullName ?? L["NotFound"].Value)</td>
+                            <td>@item.Notes</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    }
+</div>

@@ -1,0 +1,167 @@
+@using Microsoft.AspNetCore.Identity
+@using Microsoft.EntityFrameworkCore
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+@inject ApplicationDbContext Db
+@{
+    var isArabic = CultureInfo.CurrentUICulture.TwoLetterISOLanguageName == "ar";
+    var returnUrl = Context.Request.Path + Context.Request.QueryString;
+    string? CurrentPage(string controller, string action) =>
+        string.Equals(ViewContext.RouteData.Values["controller"]?.ToString(), controller, StringComparison.OrdinalIgnoreCase)
+        && string.Equals(ViewContext.RouteData.Values["action"]?.ToString(), action, StringComparison.OrdinalIgnoreCase)
+            ? "page" : null;
+
+    var currentCategory = Context.Request.Query["CategoryId"].ToString();
+    var onBrowse = CurrentPage("Listings", "Index") == "page";
+
+    // The layout also renders error pages, which must still work when the database is down.
+    var navCategories = new List<Category>();
+    try { navCategories = await Db.Categories.AsNoTracking().OrderBy(x => x.SortOrder).ToListAsync(); }
+    catch (Exception) { }
+}
+<!DOCTYPE html>
+<html lang="@(isArabic ? "ar" : "en")" dir="@(isArabic ? "rtl" : "ltr")">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="@L["SiteDescription"]" />
+    <title>@ViewData["Title"] · ZU Market</title>
+    <link rel="icon" type="image/png" href="~/images/brand/favicon.png" />
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/@(isArabic ? "bootstrap.rtl.min.css" : "bootstrap.min.css")" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+</head>
+<body>
+    <svg width="0" height="0" class="visually-hidden" aria-hidden="true">
+        <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></symbol>
+        <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+        <symbol id="i-heart" viewBox="0 0 24 24"><path d="M12 20s-7.5-4.6-9-9.3C2 7.4 4.2 5 7 5c2 0 3.6 1 5 3 1.4-2 3-3 5-3 2.800 0 5 2.400 4 5.700C19.500 15.400 12 20 12 20Z"/></symbol>
+        <symbol id="i-chat" viewBox="0 0 24 24"><path d="M4 5h16v11H9l-5 4V5Z"/></symbol>
+        <symbol id="i-user" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c1-4.500 4-7 8-7s7 2.500 8 7"/></symbol>
+        <symbol id="i-globe" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3 4 6 4 9s-1 6-4 9c-3-3-4-6-4-9s1-6 4-9Z"/></symbol>
+        <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 3 5 6v5c0 5 3 8.500 7 10 4-1.500 7-5 7-10V6l-7-3Z"/><path d="m9 12 2 2 4-4"/></symbol>
+        <symbol id="i-check" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="m8 12 3 3 5-6"/></symbol>
+        <symbol id="i-lock" viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></symbol>
+        <symbol id="i-camera" viewBox="0 0 24 24"><path d="M4 8h3l2-3h6l2 3h3a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1Z"/><circle cx="12" cy="13.500" r="3.500"/></symbol>
+        <symbol id="i-up" viewBox="0 0 24 24"><path d="m6 15 6-6 6 6"/></symbol>
+        <symbol id="i-it" viewBox="0 0 24 24"><rect x="5" y="5" width="14" height="10" rx="1"/><path d="M2 19h20"/></symbol>
+        <symbol id="i-nursing" viewBox="0 0 24 24"><path d="M12 20s-7.500-4.600-9-9.300C2 7.400 4.200 5 7 5c2 0 3.600 1 5 3 1.400-2 3-3 5-3 2.800 0 5 2.400 4 5.700C19.500 15.400 12 20 12 20Z"/><path d="M6 12h3l2-3 2 5 1.500-2H18"/></symbol>
+        <symbol id="i-medical" viewBox="0 0 24 24"><path d="M10 4h4v6h6v4h-6v6h-4v-6H4v-4h6V4Z"/></symbol>
+        <symbol id="i-literature" viewBox="0 0 24 24"><path d="M4 5c3-1.500 6-1.500 8 .5 2-2 5-2 8-.5v14c-3-1.500-6-1.500-8 .5-2-2-5-2-8-.5V5ZM12 5.500V20"/></symbol>
+        <symbol id="i-dentistry" viewBox="0 0 24 24"><path d="M7 4c-3 0-4 3-3.500 6 .4 2.500 1.500 3.500 2 6 .4 2 .8 4 2 4 1.500 0 1.500-5 4.500-5s3 5 4.500 5c1.200 0 1.600-2 2-4 .5-2.500 1.600-3.500 2-6 .5-3-.5-6-3.500-6-2 0-3 1-5 1s-3-1-5-1Z"/></symbol>
+        <symbol id="i-pharmacy" viewBox="0 0 24 24"><rect x="2.500" y="8.500" width="19" height="7" rx="3.500" transform="rotate(-45 12 12)"/><path d="m9 9 6 6"/></symbol>
+        <symbol id="i-engineering" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3.500"/><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.600 5.600l2.100 2.100M16.300 16.300l2.100 2.100M18.400 5.600l-2.100 2.100M7.700 16.300l-2.100 2.100"/></symbol>
+        <symbol id="i-science" viewBox="0 0 24 24"><path d="M9 3h6M10 3v6l-5 9a2 2 0 0 0 1.800 3h10.400a2 2 0 0 0 1.800-3l-5-9V3M7.500 15h9"/></symbol>
+        <symbol id="i-business" viewBox="0 0 24 24"><path d="M4 20h16M7 20v-6M12 20V8M17 20V9"/></symbol>
+        <symbol id="i-law" viewBox="0 0 24 24"><path d="M12 4v16M8 20h8M5 7h14M5 7l-3 7h6L5 7ZM19 7l-3 7h6l-3-7Z"/></symbol>
+        <symbol id="i-education" viewBox="0 0 24 24"><path d="m2 9 10-5 10 5-10 5L2 9Z"/><path d="M6 11.500V16c2 2 10 2 12 0v-4.500M22 9v6"/></symbol>
+        <symbol id="i-media" viewBox="0 0 24 24"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3M9 21h6"/></symbol>
+        <symbol id="i-design" viewBox="0 0 24 24"><path d="M12 3a9 9 0 1 0 0 18c1.500 0 2-1 2-2 0-1.500 1-2 2-2h2c2 0 3-1.500 3-4 0-6-4-10-9-10Z"/><circle cx="8" cy="10" r="1"/><circle cx="12" cy="7.500" r="1"/><circle cx="16" cy="10" r="1"/></symbol>
+        <symbol id="i-sharia" viewBox="0 0 24 24"><path d="M20 15.500A9 9 0 1 1 9 4a7 7 0 0 0 11 11.500Z"/></symbol>
+        <symbol id="i-other" viewBox="0 0 24 24"><rect x="4" y="4" width="7" height="7" rx="1"/><rect x="13" y="4" width="7" height="7" rx="1"/><rect x="4" y="13" width="7" height="7" rx="1"/><rect x="13" y="13" width="7" height="7" rx="1"/></symbol>
+    </svg>
+    <a class="skip-link" href="#main">@L["SkipToContent"]</a>
+    <header class="site-header">
+        <nav class="navbar navbar-light navbar-expand-xl" aria-label="@L["MainNavigation"]">
+            <div class="container">
+                <a class="brand" asp-controller="Home" asp-action="Index"><img class="brand-symbol" src="~/images/brand/zu-market-symbol.png" alt="@L["BrandLogoAlt"]" /><span><strong>ZU Market</strong><small>@L["MarketplaceSubtitle"]</small></span></a>
+                <form asp-controller="Listings" asp-action="Index" method="get" class="header-search" role="search">
+                    <label class="visually-hidden" for="site-category">@L["AllCategories"]</label>
+                    <select id="site-category" name="CategoryId">
+                        <option value="">@L["AllCategories"]</option>
+                        @foreach (var category in navCategories)
+                        {
+                            <option value="@category.Id" selected="@(currentCategory == category.Id.ToString())">@L[category.Key]</option>
+                        }
+                    </select>
+                    <label class="visually-hidden" for="site-search">@L["Search"]</label>
+                    <input id="site-search" name="Query" value="@Context.Request.Query["Query"]" placeholder="@L["SmartSearchPlaceholder"]" />
+                    <button type="submit" aria-label="@L["Search"]"><svg class="icon" aria-hidden="true"><use href="#i-search" /></svg></button>
+                </form>
+                <a class="btn btn-success header-sell" asp-controller="Listings" asp-action="Create"><svg class="icon" aria-hidden="true"><use href="#i-plus" /></svg>@L["CreateListing"]</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="@L["ToggleNavigation"]"><span class="navbar-toggler-icon"></span></button>
+                <div class="collapse navbar-collapse" id="mainNav">
+                    <div class="head-actions">
+                        <form asp-controller="Home" asp-action="SetLanguage" method="post" class="language-form">
+                            <input type="hidden" name="returnUrl" value="@returnUrl" />
+                            <input type="hidden" name="culture" value="@(isArabic ? "en" : "ar")" />
+                            <button class="head-action" type="submit"><svg class="icon" aria-hidden="true"><use href="#i-globe" /></svg>@(isArabic ? "English" : "العربية")</button>
+                        </form>
+                        @if (SignInManager.IsSignedIn(User))
+                        {
+                            <a class="head-action" aria-current="@CurrentPage("Listings", "Favorites")" asp-controller="Listings" asp-action="Favorites"><svg class="icon" aria-hidden="true"><use href="#i-heart" /></svg>@L["Favorites"]</a>
+                            <a class="head-action" aria-current="@CurrentPage("Messages", "Index")" asp-controller="Messages" asp-action="Index"><svg class="icon" aria-hidden="true"><use href="#i-chat" /></svg>@L["Messages"]</a>
+                            @if (User.IsInRole("Admin")) { <a class="head-action" aria-current="@CurrentPage("Admin", "Index")" asp-controller="Admin" asp-action="Index"><svg class="icon" aria-hidden="true"><use href="#i-shield" /></svg>@L["Administration"]</a> }
+                            <div class="dropdown">
+                                <button class="account-button dropdown-toggle" data-bs-toggle="dropdown" type="button" aria-label="@L["AccountMenu"]"><span class="avatar" aria-hidden="true">@((User.Identity?.Name ?? "U")[0].ToString().ToUpperInvariant())</span></button>
+                                <ul class="dropdown-menu dropdown-menu-end">
+                                    <li><a class="dropdown-item" asp-controller="Account" asp-action="Dashboard">@L["Dashboard"]</a></li>
+                                    <li><a class="dropdown-item" asp-controller="Listings" asp-action="My">@L["MyListings"]</a></li>
+                                    <li><a class="dropdown-item" asp-controller="Account" asp-action="Profile">@L["Profile"]</a></li>
+                                    <li><a class="dropdown-item" asp-controller="Account" asp-action="Settings">@L["Settings"]</a></li>
+                                    <li><hr class="dropdown-divider" /></li>
+                                    <li><form asp-controller="Account" asp-action="Logout" method="post"><button class="dropdown-item" type="submit">@L["Logout"]</button></form></li>
+                                </ul>
+                            </div>
+                        }
+                        else
+                        {
+                            <a class="head-action" asp-controller="Account" asp-action="Login"><svg class="icon" aria-hidden="true"><use href="#i-user" /></svg>@L["Login"]</a>
+                        }
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <nav class="category-strip" aria-label="@L["ShopByCategory"]">
+        <div class="home-wide">
+            <ul>
+                <li><a aria-current="@(onBrowse && string.IsNullOrEmpty(currentCategory) ? "page" : null)" asp-controller="Listings" asp-action="Index">@L["AllCategories"]</a></li>
+                @foreach (var category in navCategories)
+                {
+                    <li><a aria-current="@(onBrowse && currentCategory == category.Id.ToString() ? "page" : null)" asp-controller="Listings" asp-action="Index" asp-route-CategoryId="@category.Id">@L[category.Key]</a></li>
+                }
+            </ul>
+        </div>
+    </nav>
+    <main id="main" class="main-content">
+        <div class="container">
+            @if (TempData["Success"] is string success) { <div class="alert alert-success" role="status">@L[success]</div> }
+            @if (TempData["Error"] is string error) { <div class="alert alert-danger" role="alert">@L[error]</div> }
+        </div>
+        @RenderBody()
+    </main>
+    <footer class="site-footer">
+        <a class="footer-top" href="#main"><svg class="icon" aria-hidden="true"><use href="#i-up" /></svg>@L["BackToTop"]</a>
+        <ul class="home-wide footer-trust">
+            <li><svg class="icon" aria-hidden="true"><use href="#i-check" /></svg>@L["VerifiedAccounts"]</li>
+            <li><svg class="icon" aria-hidden="true"><use href="#i-shield" /></svg>@L["ReviewedListings"]</li>
+            <li><svg class="icon" aria-hidden="true"><use href="#i-lock" /></svg>@L["PrivateMessaging"]</li>
+        </ul>
+        <div class="home-wide footer-grid">
+            <div><a class="brand footer-brand" asp-controller="Home" asp-action="Index"><img class="brand-logo" src="~/images/brand/zu-market-logo.png" alt="@L["BrandLogoAlt"]" /></a><p>@L["FooterDescription"]</p></div>
+            <div class="footer-faculties">
+                <h2>@L["Marketplace"]</h2>
+                <div class="footer-links">
+                    <a asp-controller="Listings" asp-action="Index">@L["AllCategories"]</a>
+                    @foreach (var category in navCategories)
+                    {
+                        <a asp-controller="Listings" asp-action="Index" asp-route-CategoryId="@category.Id">@L[category.Key]</a>
+                    }
+                </div>
+            </div>
+            <div>
+                <h2>@L["FooterSell"]</h2>
+                <a asp-controller="Listings" asp-action="Create">@L["CreateListing"]</a>
+                <a asp-controller="Listings" asp-action="My">@L["MyListings"]</a>
+                <a asp-controller="Account" asp-action="Dashboard">@L["Dashboard"]</a>
+            </div>
+            <div><h2>@L["Legal"]</h2><a asp-controller="Home" asp-action="Privacy">@L["Privacy"]</a><a asp-controller="Home" asp-action="Terms">@L["Terms"]</a></div>
+        </div>
+        <div class="home-wide footer-bottom"><span>© @DateTime.UtcNow.Year ZU Market</span><span>@L["IndependentNotice"]</span></div>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", false)
+</body>
+</html>

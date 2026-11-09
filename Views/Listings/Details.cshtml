@@ -1,0 +1,83 @@
+@model Listing
+@{
+    var translated = (bool)(ViewBag.ShowTranslation ?? false);
+    var title = translated ? Model.TranslatedTitle! : Model.Title;
+    var description = translated ? Model.TranslatedDescription! : Model.Description;
+    ViewData["Title"] = title;
+    var favorite = (bool)(ViewBag.IsFavorite ?? false);
+    var signedIn = User.Identity?.IsAuthenticated == true;
+    var canContact = signedIn && User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)?.Value != Model.SellerId;
+    var isFree = Model.IsFree || Model.Price == 0;
+    var images = Model.Images.OrderBy(x => x.SortOrder).ToList();
+}
+<div class="home-wide pd">
+    <nav class="breadcrumbs" aria-label="@L["Browse"]">
+        <a asp-controller="Home" asp-action="Index">@L["Home"]</a><span aria-hidden="true">/</span>
+        @if (Model.Category is not null) { <a asp-action="Index" asp-route-CategoryId="@Model.CategoryId">@L[Model.Category.Key]</a> } else { <a asp-action="Index">@L["Browse"]</a> }
+        <span aria-hidden="true">/</span><span dir="auto">@title</span>
+    </nav>
+    <div class="pd-grid">
+        <section class="pd-gallery">
+            <div class="gallery-main">
+                @if (images.Count > 0) { <img id="main-image" src="@Url.Action("Image", new { id = images[0].Id })" alt="@title" /> }
+                else { <span class="image-placeholder" aria-hidden="true"></span> }
+            </div>
+            @if (images.Count > 1)
+            {
+                <div class="gallery-thumbs">
+                    @foreach (var image in images)
+                    {
+                        <button type="button" aria-pressed="@(image.Id == images[0].Id ? "true" : "false")" data-gallery-src="@Url.Action("Image", new { id = image.Id })"><img src="@Url.Action("Image", new { id = image.Id })" alt="@L["ListingPhoto"]" /></button>
+                    }
+                </div>
+            }
+        </section>
+        <aside class="pd-buy">
+            <h1 dir="auto">@title</h1>
+            <p class="pd-price@(isFree ? " is-free" : "")">@(isFree ? L["Free"].Value : $"{Model.Price:0.##} {L["JOD"]}")</p>
+            <dl class="pd-facts">
+                <div><dt>@L["Condition"]</dt><dd>@L[Model.Condition.ToString()]</dd></div>
+                <div><dt>@L["Availability"]</dt><dd>@L[Model.AvailabilityStatus.ToString()]</dd></div>
+                <div><dt>@L["Posted"]</dt><dd>@Model.CreatedAtUtc.ToLocalTime().ToString("d")</dd></div>
+            </dl>
+            @if (canContact)
+            {
+                <div class="pd-actions">
+                    <form asp-controller="Messages" asp-action="Start" method="post"><input type="hidden" name="listingId" value="@Model.Id" /><button class="btn btn-primary btn-lg btn-icon w-100" type="submit"><svg class="icon" aria-hidden="true"><use href="#i-chat" /></svg>@L["ContactSeller"]</button></form>
+                    <form asp-action="ToggleFavorite" method="post"><input type="hidden" name="id" value="@Model.Id" /><input type="hidden" name="returnUrl" value="@Context.Request.Path" /><button class="btn btn-outline-primary btn-icon pd-favorite w-100@(favorite ? " is-saved" : "")" type="submit"><svg class="icon" aria-hidden="true"><use href="#i-heart" /></svg><span>@(favorite ? L["RemoveFavorite"] : L["AddFavorite"])</span></button></form>
+                </div>
+            }
+            else if (!signedIn)
+            {
+                <div class="pd-actions">
+                    <a class="btn btn-primary btn-lg btn-icon w-100" asp-controller="Account" asp-action="Login" asp-route-returnUrl="@Context.Request.Path"><svg class="icon" aria-hidden="true"><use href="#i-chat" /></svg>@L["LoginToContact"]</a>
+                </div>
+            }
+            <div class="pd-seller">
+                <span class="avatar" aria-hidden="true">@Model.Seller!.FullName[0]</span>
+                <div><strong>@Model.Seller.FullName</strong><small>@Model.Seller.College</small></div>
+                <span class="pd-verified"><svg class="icon" aria-hidden="true"><use href="#i-check" /></svg>@L["VerifiedStudent"]</span>
+            </div>
+            @if (canContact)
+            {
+                <details class="report-box">
+                    <summary>@L["ReportListing"]</summary>
+                    <form asp-action="Report" method="post">
+                        <input type="hidden" name="ListingId" value="@Model.Id" />
+                        <div class="field"><label for="Reason">@L["Reason"]</label><select id="Reason" name="Reason">@foreach (var reason in Enum.GetValues<ReportReason>()) { <option value="@((int)reason)">@L[reason.ToString()]</option> }</select></div>
+                        <div class="field"><label for="Details">@L["OptionalDetails"]</label><textarea id="Details" name="Details" rows="3"></textarea></div>
+                        <button class="btn btn-danger" type="submit">@L["SubmitReport"]</button>
+                    </form>
+                </details>
+            }
+        </aside>
+        <section class="pd-about">
+            <h2>@L["Description"]</h2>
+            <p class="preserve-lines" dir="auto">@description</p>
+            @if (translated)
+            {
+                <details class="translation-note"><summary>@L["TranslatedAutomatically"]</summary><strong dir="auto">@Model.Title</strong><p class="preserve-lines" dir="auto">@Model.Description</p></details>
+            }
+        </section>
+    </div>
+</div>

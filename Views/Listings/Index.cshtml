@@ -1,0 +1,51 @@
+@model ListingFilterViewModel
+@{
+    ViewData["Title"] = L["BrowseListings"];
+    var selectedCategory = Model.Categories.FirstOrDefault(x => x.Id == Model.CategoryId);
+    var activeFilters = new object?[] { Model.Condition, Model.Availability, Model.MinPrice, Model.MaxPrice }.Count(x => x is not null);
+}
+<div class="home-wide browse-head">
+    <div>
+        <h1>@(selectedCategory is null ? L["BrowseListings"] : L[selectedCategory.Key])</h1>
+        <p><strong>@Model.Items.Count</strong> @L["ResultsOnPage"]</p>
+    </div>
+    <div class="browse-tools">
+        <button class="btn btn-outline-primary filter-toggle d-lg-none" type="button" data-bs-toggle="collapse" data-bs-target="#browse-filters" aria-controls="browse-filters" aria-expanded="false">
+            @L["Filters"]
+            @if (activeFilters > 0) { <span class="filter-count">@activeFilters</span> }
+        </button>
+        <form method="get" class="browse-sort">
+            <input type="hidden" name="Query" value="@Model.Query" /><input type="hidden" name="CategoryId" value="@Model.CategoryId" /><input type="hidden" name="Condition" value="@Model.Condition" /><input type="hidden" name="Availability" value="@Model.Availability" /><input type="hidden" name="MinPrice" value="@Model.MinPrice" /><input type="hidden" name="MaxPrice" value="@Model.MaxPrice" />
+            <select name="Sort" onchange="this.form.submit()" aria-label="@L["SortBy"]"><option value="newest" selected="@(Model.Sort == "newest")">@L["Newest"]</option><option value="price-asc" selected="@(Model.Sort == "price-asc")">@L["PriceLowHigh"]</option><option value="price-desc" selected="@(Model.Sort == "price-desc")">@L["PriceHighLow"]</option></select>
+        </form>
+    </div>
+</div>
+<div class="collapse d-lg-block browse-filters" id="browse-filters">
+    <form method="get" class="home-wide filter-bar">
+        <input type="hidden" asp-for="Query" />
+        <input type="hidden" asp-for="CategoryId" />
+        <input type="hidden" asp-for="Sort" />
+        <div class="field"><label asp-for="Condition">@L["Condition"]</label><select asp-for="Condition"><option value="">@L["AllConditions"]</option>@foreach (var condition in Enum.GetValues<ListingCondition>()) { <option value="@((int)condition)">@L[condition.ToString()]</option> }</select></div>
+        <div class="field"><label asp-for="Availability">@L["Availability"]</label><select asp-for="Availability"><option value="">@L["All"]</option>@foreach (var status in Enum.GetValues<ListingAvailabilityStatus>()) { <option value="@((int)status)">@L[status.ToString()]</option> }</select></div>
+        <div class="field field-price"><label asp-for="MinPrice">@L["MinPrice"]</label><input asp-for="MinPrice" inputmode="decimal" /></div>
+        <div class="field field-price"><label asp-for="MaxPrice">@L["MaxPrice"]</label><input asp-for="MaxPrice" inputmode="decimal" /></div>
+        <div class="filter-actions">
+            <button class="btn btn-primary" type="submit">@L["ApplyFilters"]</button>
+            <a asp-action="Index">@L["ClearFilters"]</a>
+        </div>
+    </form>
+</div>
+<section class="home-wide browse-results">
+    @if (Model.Items.Count == 0)
+    {
+        <div class="empty-state"><span class="empty-illustration" aria-hidden="true"></span><h2>@L["NoListings"]</h2><p>@L["TryDifferentFilters"]</p></div>
+    }
+    else
+    {
+        <div class="listing-grid">@foreach (var item in Model.Items) { <partial name="_ListingCard" model="item" /> }</div>
+        @if (Model.TotalPages > 1)
+        {
+            <nav class="pagination-wrap" aria-label="@L["Pagination"]"><ul class="pagination">@for (var i = 1; i <= Model.TotalPages; i++) { <li class="page-item @(i == Model.Page ? "active" : "")"><a class="page-link" asp-route-Page="@i" asp-route-Query="@Model.Query" asp-route-CategoryId="@Model.CategoryId" asp-route-Condition="@Model.Condition" asp-route-Availability="@Model.Availability" asp-route-MinPrice="@Model.MinPrice" asp-route-MaxPrice="@Model.MaxPrice" asp-route-Sort="@Model.Sort">@i</a></li> }</ul></nav>
+        }
+    }
+</section>

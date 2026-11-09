@@ -1,0 +1,49 @@
+@model IReadOnlyList<Listing>
+@{ ViewData["Title"] = L["MyListings"]; }
+<div class="container section">
+    <div class="section-heading"><div><h1>@L["MyListings"]</h1><p>@L["ManageListingsText"]</p></div><a class="btn btn-primary" asp-action="Create">@L["CreateListing"]</a></div>
+    @if (Model.Count == 0)
+    {
+        <div class="empty-state"><h2>@L["NoOwnListings"]</h2><p>@L["CreateFirstListing"]</p></div>
+    }
+    else
+    {
+        <div class="management-list">
+            @foreach (var item in Model)
+            {
+                <article>
+                    <div class="management-image">@if (item.Images.Any()) { <img src="@Url.Action("Image", new { id = item.Images.First().Id })" alt="@item.Title" /> }</div>
+                    <div class="management-main">
+                        <div><span class="status-badge status-@item.ModerationStatus.ToString().ToLowerInvariant()">@L[item.ModerationStatus.ToString()]</span><span class="status-badge">@L[item.AvailabilityStatus.ToString()]</span></div>
+                        <h2><a asp-action="Details" asp-route-id="@item.Id">@item.Title</a></h2>
+                        <p>@item.CreatedAtUtc.ToLocalTime().ToString("d")</p>
+                        @if (!string.IsNullOrWhiteSpace(item.ModerationNotes)) { <p class="moderation-note">@item.ModerationNotes</p> }
+                    </div>
+                    <div class="management-actions">
+                        @if (item.AvailabilityStatus != ListingAvailabilityStatus.Removed) { <a class="btn btn-outline-primary btn-sm" asp-action="Edit" asp-route-id="@item.Id">@L["Edit"]</a> }
+                        @if (item.AvailabilityStatus == ListingAvailabilityStatus.Available)
+                        {
+                            <form asp-action="MarkSold" method="post"><input type="hidden" name="id" value="@item.Id" /><button class="btn btn-outline-success btn-sm" type="submit">@L["MarkSold"]</button></form>
+                        }
+                        else if (item.AvailabilityStatus == ListingAvailabilityStatus.Sold)
+                        {
+                            <form asp-action="MarkAvailable" method="post"><input type="hidden" name="id" value="@item.Id" /><button class="btn btn-outline-success btn-sm" type="submit">@L["MarkAvailable"]</button></form>
+                        }
+                        @if (item.AvailabilityStatus != ListingAvailabilityStatus.Removed && item.ModerationStatus != ListingModerationStatus.Hidden)
+                        {
+                            <form asp-action="Hide" method="post"><input type="hidden" name="id" value="@item.Id" /><button class="btn btn-outline-primary btn-sm" type="submit">@L["Hide"]</button></form>
+                        }
+                        @if (item.ModerationStatus is ListingModerationStatus.Hidden or ListingModerationStatus.Rejected)
+                        {
+                            <form asp-action="SubmitForReview" method="post"><input type="hidden" name="id" value="@item.Id" /><button class="btn btn-primary btn-sm" type="submit">@L["SubmitForReview"]</button></form>
+                        }
+                        @if (item.AvailabilityStatus != ListingAvailabilityStatus.Removed)
+                        {
+                            <form asp-action="Remove" method="post"><input type="hidden" name="id" value="@item.Id" /><button class="btn btn-outline-danger btn-sm" type="submit" data-confirm="@L["ConfirmRemoveListing"]">@L["Remove"]</button></form>
+                        }
+                    </div>
+                </article>
+            }
+        </div>
+    }
+</div>

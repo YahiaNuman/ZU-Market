@@ -1,0 +1,4 @@
+@model ListingFormViewModel
+@{ ViewData["Title"] = L["EditListing"]; var images = ViewBag.ExistingImages as IEnumerable<ListingImage> ?? Array.Empty<ListingImage>(); }
+<div class="container page-narrow"><div class="form-heading"><h1>@L["EditListing"]</h1><p>@L["EditReviewNotice"]</p></div><div class="existing-images">@foreach (var image in images) { <div><img src="@Url.Action("Image", new { id = image.Id })" alt="@L["ListingPhoto"]" /><form asp-action="RemoveImage" method="post"><input type="hidden" name="id" value="@image.Id" /><button class="btn btn-sm btn-danger" type="submit" data-confirm="@L["ConfirmRemoveImage"]">@L["Remove"]</button></form></div> }</div><form method="post" enctype="multipart/form-data" class="form-card"><input type="hidden" asp-for="Id" /><partial name="_Form" model="Model" /></form></div>
+@section Scripts { <partial name="_ValidationScriptsPartial" /><script src="~/js/camera.js" asp-append-version="true"></script> }

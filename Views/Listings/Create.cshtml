@@ -1,0 +1,11 @@
+@model ListingFormViewModel
+@inject ZuMarket.Services.IListingDraftService Drafts
+@{ ViewData["Title"] = L["CreateListing"]; }
+<div class="container page-narrow">
+    <div class="form-heading">
+        <h1>@L["CreateListing"]</h1>
+        <p>@(Drafts.IsAvailable ? L["CreateStartAiText"] : L["CreateStartText"])</p>
+    </div>
+    <form method="post" enctype="multipart/form-data" class="form-card"><partial name="_Form" model="Model" /></form>
+</div>
+@section Scripts { <partial name="_ValidationScriptsPartial" /><script src="~/js/camera.js" asp-append-version="true"></script><script src="~/js/listing-draft.js" asp-append-version="true"></script> }

@@ -1,0 +1,12 @@
+@model IReadOnlyList<Category>
+@{ ViewData["Title"] = L["ManageCategories"]; }
+<div class="container section page-narrow">
+    <div class="section-heading"><div><h1>@L["ManageCategories"]</h1><p>@L["ManageCategoriesText"]</p></div></div>
+    <div class="management-list">
+        @for (var index = 0; index < Model.Count; index++)
+        {
+            var category = Model[index];
+            <article><div class="category-symbol category-@category.Slug"></div><div class="management-main"><h2>@L[category.Key]</h2><p>@L[$"Category_{category.Key}"]</p></div><div class="management-actions"><form asp-action="MoveCategory" method="post"><input type="hidden" name="id" value="@category.Id" /><button class="btn btn-outline-primary btn-sm" name="up" value="true" disabled="@(index == 0)">@L["MoveUp"]</button><button class="btn btn-outline-primary btn-sm" name="up" value="false" disabled="@(index == Model.Count - 1)">@L["MoveDown"]</button></form></div></article>
+        }
+    </div>
+</div>

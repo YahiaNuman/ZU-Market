@@ -1,0 +1,386 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype"><value>text/microsoft-resx</value></resheader>
+  <resheader name="version"><value>2.0</value></resheader>
+  <resheader name="reader"><value>System.Resources.ResXResourceReader, System.Windows.Forms</value></resheader>
+  <resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms</value></resheader>
+  <data name="SiteDescription" xml:space="preserve"><value>A trusted marketplace for Zarqa University students.</value></data>
+  <data name="MarketplaceSubtitle" xml:space="preserve"><value>Zarqa University Student Market</value></data>
+  <data name="SkipToContent" xml:space="preserve"><value>Skip to content</value></data>
+  <data name="MainNavigation" xml:space="preserve"><value>Main navigation</value></data>
+  <data name="ToggleNavigation" xml:space="preserve"><value>Toggle navigation</value></data>
+  <data name="CreateListing" xml:space="preserve"><value>Create listing</value></data>
+  <data name="AccountMenu" xml:space="preserve"><value>Account menu</value></data>
+  <data name="MyListings" xml:space="preserve"><value>My listings</value></data>
+  <data name="FooterDescription" xml:space="preserve"><value>Buy, sell, and share safely within the student community.</value></data>
+  <data name="IndependentNotice" xml:space="preserve"><value>An independent student marketplace.</value></data>
+  <data name="VerifiedStudentMarketplace" xml:space="preserve"><value>Verified student marketplace</value></data>
+  <data name="HeroTitle" xml:space="preserve"><value>Find what you need. Sell what you no longer use.</value></data>
+  <data name="HeroText" xml:space="preserve"><value>A safer, simpler marketplace created for Zarqa University students.</value></data>
+  <data name="SmartSearchPlaceholder" xml:space="preserve"><value>Try “networking book under 10 JOD”</value></data>
+  <data name="BrowseListings" xml:space="preserve"><value>Browse listings</value></data>
+  <data name="BuiltForStudents" xml:space="preserve"><value>Built around student trust</value></data>
+  <data name="TrustText" xml:space="preserve"><value>Human review and clear safeguards help keep the community useful.</value></data>
+  <data name="VerifiedAccounts" xml:space="preserve"><value>Verified student accounts</value></data>
+  <data name="ReviewedListings" xml:space="preserve"><value>Reviewed listings</value></data>
+  <data name="PrivateMessaging" xml:space="preserve"><value>Private student messaging</value></data>
+  <data name="ShopByCategory" xml:space="preserve"><value>Shop by category</value></data>
+  <data name="RecentListings" xml:space="preserve"><value>Recent listings</value></data>
+  <data name="ViewAll" xml:space="preserve"><value>View all</value></data>
+  <data name="NoListings" xml:space="preserve"><value>No listings yet</value></data>
+  <data name="BeFirst" xml:space="preserve"><value>Be the first to list an item and share it with fellow students.</value></data>
+  <data name="ReadyToSell" xml:space="preserve"><value>Ready to give your items a second life?</value></data>
+  <data name="ReadyToSellText" xml:space="preserve"><value>Create a clear listing in minutes and reach verified students.</value></data>
+  <data name="BooksDescription" xml:space="preserve"><value>Textbooks and references</value></data>
+  <data name="ComputerDescription" xml:space="preserve"><value>Devices and accessories</value></data>
+  <data name="CharityDescription" xml:space="preserve"><value>Items offered for free</value></data>
+  <data name="OtherDescription" xml:space="preserve"><value>Everything else students need</value></data>
+  <data name="LikeNew" xml:space="preserve"><value>Like new</value></data>
+  <data name="Free" xml:space="preserve"><value>Free</value></data>
+  <data name="JOD" xml:space="preserve"><value>JOD</value></data>
+  <data name="BrowseText" xml:space="preserve"><value>Search approved listings from verified students.</value></data>
+  <data name="AllCategories" xml:space="preserve"><value>All categories</value></data>
+  <data name="AllConditions" xml:space="preserve"><value>All conditions</value></data>
+  <data name="MinPrice" xml:space="preserve"><value>Minimum price</value></data>
+  <data name="MaxPrice" xml:space="preserve"><value>Maximum price</value></data>
+  <data name="ApplyFilters" xml:space="preserve"><value>Apply filters</value></data>
+  <data name="ClearFilters" xml:space="preserve"><value>Clear filters</value></data>
+  <data name="ResultsOnPage" xml:space="preserve"><value>results on this page</value></data>
+  <data name="SortBy" xml:space="preserve"><value>Sort by</value></data>
+  <data name="Newest" xml:space="preserve"><value>Newest first</value></data>
+  <data name="PriceLowHigh" xml:space="preserve"><value>Price: low to high</value></data>
+  <data name="PriceHighLow" xml:space="preserve"><value>Price: high to low</value></data>
+  <data name="TryDifferentFilters" xml:space="preserve"><value>Try changing your search or filters.</value></data>
+  <data name="SelectCategory" xml:space="preserve"><value>Select a category</value></data>
+  <data name="FreeListing" xml:space="preserve"><value>This item is free</value></data>
+  <data name="ListingPhotos" xml:space="preserve"><value>Listing photos</value></data>
+  <data name="PhotoHelp" xml:space="preserve"><value>Add 1–6 clear JPG, PNG, or WebP images, up to 5 MB each.</value></data>
+  <data name="ChooseFiles" xml:space="preserve"><value>Choose photos</value></data>
+  <data name="UseCamera" xml:space="preserve"><value>Use camera</value></data>
+  <data name="UsePhoto" xml:space="preserve"><value>Use photo</value></data>
+  <data name="SubmitForReview" xml:space="preserve"><value>Submit for review</value></data>
+  <data name="SellSafely" xml:space="preserve"><value>Sell safely</value></data>
+  <data name="ListingReviewNotice" xml:space="preserve"><value>Your listing will be reviewed before it becomes public.</value></data>
+  <data name="EditListing" xml:space="preserve"><value>Edit listing</value></data>
+  <data name="EditReviewNotice" xml:space="preserve"><value>Edited listings return to review before publication.</value></data>
+  <data name="ListingPhoto" xml:space="preserve"><value>Listing photo</value></data>
+  <data name="ConfirmRemoveImage" xml:space="preserve"><value>Remove this photo?</value></data>
+  <data name="ContactSeller" xml:space="preserve"><value>Contact seller</value></data>
+  <data name="RemoveFavorite" xml:space="preserve"><value>Remove from favorites</value></data>
+  <data name="AddFavorite" xml:space="preserve"><value>Add to favorites</value></data>
+  <data name="LoginToContact" xml:space="preserve"><value>Log in to contact seller</value></data>
+  <data name="VerifiedStudent" xml:space="preserve"><value>Verified student</value></data>
+  <data name="ReportListing" xml:space="preserve"><value>Report this listing</value></data>
+  <data name="OptionalDetails" xml:space="preserve"><value>Optional details</value></data>
+  <data name="SubmitReport" xml:space="preserve"><value>Submit report</value></data>
+  <data name="ManageListingsText" xml:space="preserve"><value>Track review status and manage your listings.</value></data>
+  <data name="NoOwnListings" xml:space="preserve"><value>You have not created any listings</value></data>
+  <data name="CreateFirstListing" xml:space="preserve"><value>Create your first listing to reach the student community.</value></data>
+  <data name="MarkSold" xml:space="preserve"><value>Mark as sold</value></data>
+  <data name="ConfirmRemoveListing" xml:space="preserve"><value>Remove this listing?</value></data>
+  <data name="FavoritesText" xml:space="preserve"><value>Your saved marketplace items.</value></data>
+  <data name="NoFavorites" xml:space="preserve"><value>No saved listings</value></data>
+  <data name="NoFavoritesText" xml:space="preserve"><value>Save listings to find them quickly later.</value></data>
+  <data name="CreateStudentAccount" xml:space="preserve"><value>Create your student account</value></data>
+  <data name="JoinCommunity" xml:space="preserve"><value>Join the community</value></data>
+  <data name="RegistrationText" xml:space="preserve"><value>Sign up with your university email. Your account is approved automatically once you confirm it.</value></data>
+  <data name="FullName" xml:space="preserve"><value>Full name</value></data>
+  <data name="UniversityId" xml:space="preserve"><value>University ID number</value></data>
+  <data name="UniversityEmail" xml:space="preserve"><value>University email</value></data>
+  <data name="EmailDomainHelp" xml:space="preserve"><value>Only addresses ending in {0} can register.</value></data>
+  <data name="PhoneOptional" xml:space="preserve"><value>Phone number (optional)</value></data>
+  <data name="ConfirmPassword" xml:space="preserve"><value>Confirm password</value></data>
+  <data name="PasswordRequirements" xml:space="preserve"><value>Use at least 8 characters with uppercase, lowercase, number, and symbol.</value></data>
+  <data name="IAgree" xml:space="preserve"><value>I agree to the</value></data>
+  <data name="CreateAccount" xml:space="preserve"><value>Create account</value></data>
+  <data name="WelcomeBackAside" xml:space="preserve"><value>Your campus marketplace, all in one place.</value></data>
+  <data name="WelcomeBackAsideText" xml:space="preserve"><value>Discover useful items and connect with verified students.</value></data>
+  <data name="WelcomeBack" xml:space="preserve"><value>Welcome back</value></data>
+  <data name="LoginText" xml:space="preserve"><value>Log in to manage listings, favorites, and messages.</value></data>
+  <data name="RememberMe" xml:space="preserve"><value>Remember me</value></data>
+  <data name="ForgotPassword" xml:space="preserve"><value>Forgot password?</value></data>
+  <data name="NoAccount" xml:space="preserve"><value>New to ZU Market?</value></data>
+  <data name="ForgotPasswordText" xml:space="preserve"><value>Enter your email to request a secure reset link.</value></data>
+  <data name="SendResetLink" xml:space="preserve"><value>Request reset link</value></data>
+  <data name="DevelopmentOnly" xml:space="preserve"><value>Development mode</value></data>
+  <data name="DevelopmentResetText" xml:space="preserve"><value>Email delivery is not configured. Use this development-only reset link.</value></data>
+  <data name="OpenResetPage" xml:space="preserve"><value>Open reset page</value></data>
+  <data name="ResetPassword" xml:space="preserve"><value>Reset password</value></data>
+  <data name="ResetPasswordText" xml:space="preserve"><value>Choose a new secure password.</value></data>
+  <data name="NewPassword" xml:space="preserve"><value>New password</value></data>
+  <data name="StudentDashboard" xml:space="preserve"><value>Student dashboard</value></data>
+  <data name="HelloUser" xml:space="preserve"><value>Hello, {0}</value></data>
+  <data name="DashboardText" xml:space="preserve"><value>Manage your account and marketplace activity.</value></data>
+  <data name="ViewVerification" xml:space="preserve"><value>View verification</value></data>
+  <data name="RecentOwnListings" xml:space="preserve"><value>Your recent listings</value></data>
+  <data name="ProfileText" xml:space="preserve"><value>Keep your permitted profile details up to date.</value></data>
+  <data name="SaveChanges" xml:space="preserve"><value>Save changes</value></data>
+  <data name="AccountSettings" xml:space="preserve"><value>Account settings</value></data>
+  <data name="ChangePasswordText" xml:space="preserve"><value>Update your password securely.</value></data>
+  <data name="CurrentPassword" xml:space="preserve"><value>Current password</value></data>
+  <data name="ChangePassword" xml:space="preserve"><value>Change password</value></data>
+  <data name="AccessDenied" xml:space="preserve"><value>Access denied</value></data>
+  <data name="AccessDeniedText" xml:space="preserve"><value>You do not have permission to open this page.</value></data>
+  <data name="UniversityVerification" xml:space="preserve"><value>University verification</value></data>
+  <data name="StudentTrust" xml:space="preserve"><value>Student trust</value></data>
+  <data name="VerificationIntro" xml:space="preserve"><value>Student access comes from your confirmed university email.</value></data>
+  <data name="SubmitDocument" xml:space="preserve"><value>Submit document</value></data>
+  <data name="AdminReview" xml:space="preserve"><value>Administrator review</value></data>
+  <data name="MarketplaceAccess" xml:space="preserve"><value>Marketplace access</value></data>
+  <data name="VerificationApproved" xml:space="preserve"><value>Verification approved</value></data>
+  <data name="VerificationApprovedText" xml:space="preserve"><value>You can now publish listings and contact sellers.</value></data>
+  <data name="VerificationPending" xml:space="preserve"><value>Verification pending</value></data>
+  <data name="VerificationPendingText" xml:space="preserve"><value>Your document is waiting for administrator review.</value></data>
+  <data name="ViewSubmittedDocument" xml:space="preserve"><value>View submitted document</value></data>
+  <data name="VerificationRejected" xml:space="preserve"><value>Verification needs attention</value></data>
+  <data name="VerificationRejectedText" xml:space="preserve"><value>Your account was not approved. Please contact the site administrator.</value></data>
+  <data name="SubmitUniversityId" xml:space="preserve"><value>Submit your university ID</value></data>
+  <data name="DocumentSafetyText" xml:space="preserve"><value>The image is stored privately and only you and authorized administrators can view it.</value></data>
+  <data name="ChooseFile" xml:space="preserve"><value>Choose image</value></data>
+  <data name="MessagesText" xml:space="preserve"><value>Conversations connected to marketplace listings.</value></data>
+  <data name="NoConversations" xml:space="preserve"><value>No conversations yet</value></data>
+  <data name="NoConversationsText" xml:space="preserve"><value>Contact a seller from an approved listing to begin.</value></data>
+  <data name="StartConversation" xml:space="preserve"><value>Send the first message about this listing.</value></data>
+  <data name="TypeMessage" xml:space="preserve"><value>Type your message…</value></data>
+  <data name="AdminDashboard" xml:space="preserve"><value>Administration dashboard</value></data>
+  <data name="AdminDashboardText" xml:space="preserve"><value>Review verification requests and moderate marketplace activity.</value></data>
+  <data name="PendingVerifications" xml:space="preserve"><value>Pending verifications</value></data>
+  <data name="PendingListings" xml:space="preserve"><value>Pending listings</value></data>
+  <data name="PendingReports" xml:space="preserve"><value>Pending reports</value></data>
+  <data name="PublishedListings" xml:space="preserve"><value>Published listings</value></data>
+  <data name="ReviewVerifications" xml:space="preserve"><value>Review verifications</value></data>
+  <data name="ReviewVerificationsText" xml:space="preserve"><value>Inspect private student documents and approve or reject requests.</value></data>
+  <data name="ModerateListings" xml:space="preserve"><value>Moderate listings</value></data>
+  <data name="ModerateListingsText" xml:space="preserve"><value>Review new and edited listings before publication.</value></data>
+  <data name="ReviewReports" xml:space="preserve"><value>Review reports</value></data>
+  <data name="ReviewReportsText" xml:space="preserve"><value>Investigate reports and record a resolution.</value></data>
+  <data name="ManageUsers" xml:space="preserve"><value>Manage users</value></data>
+  <data name="ManageUsersText" xml:space="preserve"><value>Review account status and safely disable access.</value></data>
+  <data name="VerificationDetails" xml:space="preserve"><value>Verification details</value></data>
+  <data name="UniversityIdDocument" xml:space="preserve"><value>Private university ID document</value></data>
+  <data name="ReviewNotes" xml:space="preserve"><value>Review notes</value></data>
+  <data name="NothingToReview" xml:space="preserve"><value>Nothing to review</value></data>
+  <data name="ModerationNotes" xml:space="preserve"><value>Moderation notes</value></data>
+  <data name="ResolutionNotes" xml:space="preserve"><value>Resolution notes</value></data>
+  <data name="AccountStatus" xml:space="preserve"><value>Account status</value></data>
+  <data name="NotFoundTitle" xml:space="preserve"><value>We could not find that page</value></data>
+  <data name="NotFoundText" xml:space="preserve"><value>The link may be old or the content is no longer available.</value></data>
+  <data name="BackHome" xml:space="preserve"><value>Back to home</value></data>
+  <data name="ErrorTitle" xml:space="preserve"><value>Something went wrong</value></data>
+  <data name="ErrorText" xml:space="preserve"><value>We could not complete your request. Please try again.</value></data>
+  <data name="RequestId" xml:space="preserve"><value>Request ID:</value></data>
+  <data name="PrivacyIntro" xml:space="preserve"><value>This starter policy explains how ZU Market handles student marketplace data.</value></data>
+  <data name="InformationWeCollect" xml:space="preserve"><value>Information we collect</value></data>
+  <data name="InformationWeCollectText" xml:space="preserve"><value>We store account, listing, message, report, and verification information needed to operate the service.</value></data>
+  <data name="HowWeUseData" xml:space="preserve"><value>How we use data</value></data>
+  <data name="HowWeUseDataText" xml:space="preserve"><value>Data supports account security, marketplace features, moderation, and abuse prevention.</value></data>
+  <data name="DocumentPrivacy" xml:space="preserve"><value>Verification document privacy</value></data>
+  <data name="DocumentPrivacyText" xml:space="preserve"><value>University ID images are stored outside the public web root and restricted to their owner and authorized administrators.</value></data>
+  <data name="YourChoices" xml:space="preserve"><value>Your choices</value></data>
+  <data name="YourChoicesText" xml:space="preserve"><value>You may update permitted profile details and request assistance with account data.</value></data>
+  <data name="TermsIntro" xml:space="preserve"><value>By using ZU Market, you agree to use the marketplace lawfully and respectfully.</value></data>
+  <data name="StudentResponsibility" xml:space="preserve"><value>Student responsibility</value></data>
+  <data name="StudentResponsibilityText" xml:space="preserve"><value>Provide accurate listing information, communicate respectfully, and arrange exchanges safely.</value></data>
+  <data name="MarketplaceSafety" xml:space="preserve"><value>Marketplace safety</value></data>
+  <data name="MarketplaceSafetyText" xml:space="preserve"><value>Inspect items before payment and report suspicious or prohibited activity.</value></data>
+  <data name="ModerationText" xml:space="preserve"><value>Administrators may reject, hide, or remove content and restrict accounts when necessary.</value></data>
+  <data name="RegistrationSuccess" xml:space="preserve"><value>Your account was created. Confirm your university email to activate it.</value></data>
+  <data name="PasswordResetRequested" xml:space="preserve"><value>If the account exists, password reset instructions were sent to its email.</value></data>
+  <data name="PasswordResetComplete" xml:space="preserve"><value>Your password has been reset.</value></data>
+  <data name="ProfileUpdated" xml:space="preserve"><value>Your profile was updated.</value></data>
+  <data name="PasswordChanged" xml:space="preserve"><value>Your password was changed.</value></data>
+  <data name="ListingSubmitted" xml:space="preserve"><value>Your listing was submitted for review.</value></data>
+  <data name="ListingUpdated" xml:space="preserve"><value>Your changes were submitted for review.</value></data>
+  <data name="ListingMarkedSold" xml:space="preserve"><value>The listing was marked as sold.</value></data>
+  <data name="ListingRemoved" xml:space="preserve"><value>The listing was removed.</value></data>
+  <data name="ReportSubmitted" xml:space="preserve"><value>Your report was submitted.</value></data>
+  <data name="VerificationSubmitted" xml:space="preserve"><value>Your document was submitted securely for review.</value></data>
+  <data name="InvalidImage" xml:space="preserve"><value>Use a valid JPG, PNG, or WebP image up to 5 MB.</value></data>
+  <data name="VerificationAlreadyPending" xml:space="preserve"><value>A verification request is already pending.</value></data>
+  <data name="ModerationSaved" xml:space="preserve"><value>The moderation decision was saved.</value></data>
+  <data name="ReportResolved" xml:space="preserve"><value>The report resolution was saved.</value></data>
+  <data name="CannotDisableSelf" xml:space="preserve"><value>You cannot disable your own account.</value></data>
+  <data name="Role" xml:space="preserve"><value>Role</value></data><data name="Admin" xml:space="preserve"><value>Administrator</value></data><data name="User" xml:space="preserve"><value>User</value></data><data name="GrantAdmin" xml:space="preserve"><value>Grant admin</value></data><data name="RevokeAdmin" xml:space="preserve"><value>Revoke admin</value></data><data name="ConfirmRoleChange" xml:space="preserve"><value>Change this user's administrator role?</value></data><data name="CannotChangeOwnRole" xml:space="preserve"><value>You cannot change your own administrator role.</value></data><data name="RoleChangeFailed" xml:space="preserve"><value>The role could not be changed.</value></data><data name="RoleChanged" xml:space="preserve"><value>The user role was updated.</value></data>
+  <data name="TermsRequired" xml:space="preserve"><value>You must accept the terms.</value></data><data name="EmailDomainNotAllowed" xml:space="preserve"><value>Only university email addresses can register.</value></data><data name="InvalidLogin" xml:space="preserve"><value>The email or password is incorrect.</value></data><data name="AccountLocked" xml:space="preserve"><value>The account is temporarily locked. Try again later.</value></data><data name="PhotoCountInvalid" xml:space="preserve"><value>Add between 1 and 6 photos.</value></data><data name="ListingNeedsPhoto" xml:space="preserve"><value>A listing must keep at least one photo.</value></data>
+  <data name="The {0} field is required." xml:space="preserve"><value>The {0} field is required.</value></data><data name="The {0} field is not a valid e-mail address." xml:space="preserve"><value>Enter a valid email address.</value></data><data name="The {0} field is not a valid phone number." xml:space="preserve"><value>Enter a valid phone number.</value></data><data name="'{0}' and '{1}' do not match." xml:space="preserve"><value>The two values do not match.</value></data><data name="The field {0} is invalid." xml:space="preserve"><value>The {0} field is invalid.</value></data>
+  <data name="Actions" xml:space="preserve"><value>Actions</value></data><data name="Active" xml:space="preserve"><value>Active</value></data><data name="Administration" xml:space="preserve"><value>Administration</value></data><data name="All" xml:space="preserve"><value>All</value></data><data name="Approve" xml:space="preserve"><value>Approve</value></data><data name="Approved" xml:space="preserve"><value>Approved</value></data><data name="Availability" xml:space="preserve"><value>Availability</value></data><data name="Back" xml:space="preserve"><value>Back</value></data><data name="Browse" xml:space="preserve"><value>Browse</value></data><data name="Cancel" xml:space="preserve"><value>Cancel</value></data><data name="Capture" xml:space="preserve"><value>Capture</value></data><data name="Category" xml:space="preserve"><value>Category</value></data><data name="College" xml:space="preserve"><value>College</value></data><data name="Condition" xml:space="preserve"><value>Condition</value></data><data name="Conversation" xml:space="preserve"><value>Conversation</value></data><data name="Dashboard" xml:space="preserve"><value>Dashboard</value></data><data name="Description" xml:space="preserve"><value>Description</value></data><data name="Disable" xml:space="preserve"><value>Disable</value></data><data name="Disabled" xml:space="preserve"><value>Disabled</value></data><data name="Dismiss" xml:space="preserve"><value>Dismiss</value></data><data name="Edit" xml:space="preserve"><value>Edit</value></data><data name="Email" xml:space="preserve"><value>Email</value></data><data name="Enable" xml:space="preserve"><value>Enable</value></data><data name="Error" xml:space="preserve"><value>Error</value></data><data name="Explore" xml:space="preserve"><value>Explore</value></data><data name="Favorites" xml:space="preserve"><value>Favorites</value></data><data name="Filters" xml:space="preserve"><value>Filters</value></data><data name="Hidden" xml:space="preserve"><value>Hidden</value></data><data name="Hide" xml:space="preserve"><value>Hide</value></data><data name="Home" xml:space="preserve"><value>Home</value></data><data name="Latest" xml:space="preserve"><value>Latest</value></data><data name="Legal" xml:space="preserve"><value>Legal</value></data><data name="Login" xml:space="preserve"><value>Log in</value></data><data name="Logout" xml:space="preserve"><value>Log out</value></data><data name="Marketplace" xml:space="preserve"><value>Marketplace</value></data><data name="Message" xml:space="preserve"><value>Message</value></data><data name="Messages" xml:space="preserve"><value>Messages</value></data><data name="Moderation" xml:space="preserve"><value>Moderation</value></data><data name="NotFound" xml:space="preserve"><value>Not found</value></data><data name="Pagination" xml:space="preserve"><value>Result pages</value></data><data name="Password" xml:space="preserve"><value>Password</value></data><data name="Pending" xml:space="preserve"><value>Pending</value></data><data name="Posted" xml:space="preserve"><value>Posted</value></data><data name="Price" xml:space="preserve"><value>Price</value></data><data name="Privacy" xml:space="preserve"><value>Privacy</value></data><data name="Profile" xml:space="preserve"><value>Profile</value></data><data name="Reason" xml:space="preserve"><value>Reason</value></data><data name="Register" xml:space="preserve"><value>Register</value></data><data name="Reject" xml:space="preserve"><value>Reject</value></data><data name="Rejected" xml:space="preserve"><value>Rejected</value></data><data name="Remove" xml:space="preserve"><value>Remove</value></data><data name="Resolve" xml:space="preserve"><value>Resolve</value></data><data name="Retake" xml:space="preserve"><value>Retake</value></data><data name="Review" xml:space="preserve"><value>Review</value></data><data name="Search" xml:space="preserve"><value>Search</value></data><data name="SearchPlaceholder" xml:space="preserve"><value>Search title or description</value></data><data name="Seller" xml:space="preserve"><value>Seller</value></data><data name="Send" xml:space="preserve"><value>Send</value></data><data name="Settings" xml:space="preserve"><value>Settings</value></data><data name="Status" xml:space="preserve"><value>Status</value></data><data name="Student" xml:space="preserve"><value>Student</value></data><data name="Submitted" xml:space="preserve"><value>Submitted</value></data><data name="Terms" xml:space="preserve"><value>Terms</value></data><data name="Title" xml:space="preserve"><value>Title</value></data><data name="Users" xml:space="preserve"><value>Users</value></data><data name="Verification" xml:space="preserve"><value>Verification</value></data>
+  <data name="Inappropriate" xml:space="preserve"><value>Inappropriate content</value></data><data name="Misleading" xml:space="preserve"><value>Misleading information</value></data><data name="SuspectedFraud" xml:space="preserve"><value>Suspected fraud</value></data><data name="Prohibited" xml:space="preserve"><value>Prohibited item</value></data><data name="Resolved" xml:space="preserve"><value>Resolved</value></data><data name="Dismissed" xml:space="preserve"><value>Dismissed</value></data>
+  <data name="Books" xml:space="preserve"><value>Books</value></data>
+  <data name="Computer" xml:space="preserve"><value>Computer</value></data>
+  <data name="Charity" xml:space="preserve"><value>Charity</value></data>
+  <data name="Other" xml:space="preserve"><value>Other</value></data>
+  <data name="New" xml:space="preserve"><value>New</value></data>
+  <data name="Good" xml:space="preserve"><value>Good</value></data>
+  <data name="Fair" xml:space="preserve"><value>Fair</value></data>
+  <data name="Available" xml:space="preserve"><value>Available</value></data>
+  <data name="Sold" xml:space="preserve"><value>Sold</value></data>
+  <data name="Removed" xml:space="preserve"><value>Removed</value></data>
+  <data name="BrandLogoAlt" xml:space="preserve"><value>ZU Market logo</value></data>
+  <data name="MarkAvailable" xml:space="preserve"><value>Mark as available</value></data>
+  <data name="ListingHidden" xml:space="preserve"><value>The listing is now hidden.</value></data>
+  <data name="ListingResubmitted" xml:space="preserve"><value>The listing was submitted for review.</value></data>
+  <data name="NoMessagesYet" xml:space="preserve"><value>No messages yet</value></data>
+  <data name="UnreadMessages" xml:space="preserve"><value>{0} unread messages</value></data>
+  <data name="MessageRequired" xml:space="preserve"><value>Enter a message before sending.</value></data>
+  <data name="MessageRateLimited" xml:space="preserve"><value>Please wait a moment before sending another message.</value></data>
+  <data name="OnePhotoOnly" xml:space="preserve"><value>Choose one image.</value></data>
+  <data name="ModerationHistory" xml:space="preserve"><value>Moderation history</value></data>
+  <data name="ModerationHistoryText" xml:space="preserve"><value>Review recent administrator decisions and account actions.</value></data>
+  <data name="Administrator" xml:space="preserve"><value>Administrator</value></data>
+  <data name="Target" xml:space="preserve"><value>Target</value></data>
+  <data name="Notes" xml:space="preserve"><value>Notes</value></data>
+  <data name="Date" xml:space="preserve"><value>Date</value></data>
+  <data name="CannotGrantDisabledUser" xml:space="preserve"><value>Enable the account before granting administrator access.</value></data>
+  <data name="Action_Approved" xml:space="preserve"><value>Listing approved</value></data>
+  <data name="Action_Rejected" xml:space="preserve"><value>Listing rejected</value></data>
+  <data name="Action_Hidden" xml:space="preserve"><value>Listing hidden</value></data>
+  <data name="Action_Removed" xml:space="preserve"><value>Listing removed</value></data>
+  <data name="Action_Restored" xml:space="preserve"><value>Listing restored</value></data>
+  <data name="Action_UserDisabled" xml:space="preserve"><value>User disabled</value></data>
+  <data name="Action_UserEnabled" xml:space="preserve"><value>User enabled</value></data>
+  <data name="Action_VerificationApproved" xml:space="preserve"><value>Verification approved</value></data>
+  <data name="Action_VerificationRejected" xml:space="preserve"><value>Verification rejected</value></data>
+  <data name="Action_ReportResolved" xml:space="preserve"><value>Report resolved</value></data>
+  <data name="Action_ReportDismissed" xml:space="preserve"><value>Report dismissed</value></data>
+  <data name="Action_AdminGranted" xml:space="preserve"><value>Administrator access granted</value></data>
+  <data name="Action_AdminRevoked" xml:space="preserve"><value>Administrator access revoked</value></data>
+  <data name="Action_AiOverrideApproved" xml:space="preserve"><value>Administrator overrode AI and approved the listing</value></data>
+  <data name="Action_AiOverrideRejected" xml:space="preserve"><value>Administrator overrode AI and rejected the listing</value></data>
+  <data name="ChatConnecting" xml:space="preserve"><value>Connecting…</value></data>
+  <data name="ChatConnected" xml:space="preserve"><value>Live</value></data>
+  <data name="ChatDisconnected" xml:space="preserve"><value>Connection lost</value></data>
+  <data name="ChatSendFailed" xml:space="preserve"><value>Message could not be sent. Check your connection and retry.</value></data>
+  <data name="Retry" xml:space="preserve"><value>Retry</value></data>
+  <data name="ConfirmEmail" xml:space="preserve"><value>Confirm email</value></data>
+  <data name="ConfirmYourEmail" xml:space="preserve"><value>Confirm your email</value></data>
+  <data name="ConfirmEmailText" xml:space="preserve"><value>Complete account setup for {0}.</value></data>
+  <data name="DevelopmentConfirmationText" xml:space="preserve"><value>Email delivery is not configured. Use this local development link to confirm the address.</value></data>
+  <data name="EmailDeliveryUnavailable" xml:space="preserve"><value>Email delivery is not configured. Contact the site administrator.</value></data>
+  <data name="EmailConfirmed" xml:space="preserve"><value>Your email is confirmed. You can now sign in.</value></data>
+  <data name="EmailConfirmationFailed" xml:space="preserve"><value>This confirmation link is invalid or has expired.</value></data>
+  <data name="EmailNotConfirmed" xml:space="preserve"><value>Confirm your email before signing in.</value></data>
+  <data name="AiReviewNotConfigured" xml:space="preserve"><value>AI review is not configured</value></data>
+  <data name="AiReviewNotConfiguredText" xml:space="preserve"><value>New listings stay pending for an administrator to review. Configure the provider in secure settings to enable assisted review.</value></data>
+  <data name="AiReviewConfigured" xml:space="preserve"><value>AI review is enabled. Automatic approval requires at least {0} confidence and every configured rule to pass.</value></data>
+  <data name="AiProviderReady" xml:space="preserve"><value>AI provider is available</value></data>
+  <data name="AiProviderMissingKey" xml:space="preserve"><value>OpenAI API key is missing</value></data>
+  <data name="AiProviderUnavailable" xml:space="preserve"><value>OpenAI could not be reached</value></data>
+  <data name="AiProviderUnavailableText" xml:space="preserve"><value>The connection or request timed out. Listings remain pending for manual review.</value></data>
+  <data name="AiProviderAuthenticationFailed" xml:space="preserve"><value>OpenAI rejected the configured API credentials</value></data>
+  <data name="AiProviderAuthenticationFailedText" xml:space="preserve"><value>The API key is present but was not accepted. Replace it with a valid key in User Secrets and restart the Development app.</value></data>
+  <data name="AiProviderDisabled" xml:space="preserve"><value>AI listing review is disabled</value></data>
+  <data name="AiProviderDisabledText" xml:space="preserve"><value>Listings remain pending for manual review while AI review is disabled.</value></data>
+  <data name="AiProviderConfiguration" xml:space="preserve"><value>OpenAI configuration</value></data>
+  <data name="AiProviderEnabledState" xml:space="preserve"><value>Enabled</value></data>
+  <data name="AiApiKeyConfiguredState" xml:space="preserve"><value>API key configured</value></data>
+  <data name="AiRequiredSettingsState" xml:space="preserve"><value>Required settings configured</value></data>
+  <data name="ConfiguredYes" xml:space="preserve"><value>Yes</value></data>
+  <data name="ConfiguredNo" xml:space="preserve"><value>No</value></data>
+  <data name="AiProviderInvalidConfiguration" xml:space="preserve"><value>OpenAI configuration is incomplete</value></data>
+  <data name="AiProviderInvalidConfigurationText" xml:space="preserve"><value>The model or HTTPS endpoint is missing or invalid. Listings remain pending for manual review.</value></data>
+  <data name="AiProviderError" xml:space="preserve"><value>OpenAI did not accept the verification request</value></data>
+  <data name="AiProviderErrorText" xml:space="preserve"><value>The key was not rejected as invalid, but the provider returned another error. Check the safe HTTP status in the application log.</value></data>
+  <data name="AiProviderInvalidResponse" xml:space="preserve"><value>OpenAI returned an unexpected response</value></data>
+  <data name="AiProviderInvalidResponseText" xml:space="preserve"><value>The provider responded, but the result could not be verified. Listings remain pending for manual review.</value></data>
+  <data name="AiReviewResult" xml:space="preserve"><value>AI review result</value></data>
+  <data name="AiReviewDecision_Approved" xml:space="preserve"><value>Moderation clear</value></data>
+  <data name="AiReviewDecision_NeedsManualReview" xml:space="preserve"><value>Needs manual review</value></data>
+  <data name="AiReviewDecision_ProviderUnavailable" xml:space="preserve"><value>Provider unavailable</value></data>
+  <data name="AiReviewDecision_InvalidResponse" xml:space="preserve"><value>Invalid provider response</value></data>
+  <data name="AiRule_RequiredFields" xml:space="preserve"><value>Required fields</value></data>
+  <data name="AiRule_AllowedCategory" xml:space="preserve"><value>Allowed category</value></data>
+  <data name="AiRule_ValidPrice" xml:space="preserve"><value>Valid price</value></data>
+  <data name="AiRule_ListingImageRequired" xml:space="preserve"><value>Listing image required</value></data>
+  <data name="RulePassed" xml:space="preserve"><value>Passed</value></data>
+  <data name="RuleFailed" xml:space="preserve"><value>Needs review</value></data>
+  <data name="ReviewState_PendingReview" xml:space="preserve"><value>Pending review</value></data>
+  <data name="ReviewState_AiApproved" xml:space="preserve"><value>AI approved</value></data>
+  <data name="ReviewState_NeedsManualReview" xml:space="preserve"><value>Needs manual review</value></data>
+  <data name="ReviewState_ManuallyApproved" xml:space="preserve"><value>Manually approved</value></data>
+  <data name="ReviewState_ManuallyRejected" xml:space="preserve"><value>Manually rejected</value></data>
+  <data name="ManageCategories" xml:space="preserve"><value>Manage categories</value></data>
+  <data name="ManageCategoriesText" xml:space="preserve"><value>The marketplace uses exactly four categories. You can change their display order.</value></data>
+  <data name="MoveUp" xml:space="preserve"><value>Move up</value></data>
+  <data name="MoveDown" xml:space="preserve"><value>Move down</value></data>
+  <data name="Category_Books" xml:space="preserve"><value>University books, notes, and summaries</value></data>
+  <data name="Category_Computer" xml:space="preserve"><value>Laptops, computer accessories, and electronics</value></data>
+  <data name="Category_Charity" xml:space="preserve"><value>Free items offered by students</value></data>
+  <data name="Category_Other" xml:space="preserve"><value>Miscellaneous student items</value></data>
+  <data name="CategoryOrderUpdated" xml:space="preserve"><value>Category order updated.</value></data>
+  <data name="NotApplicable" xml:space="preserve"><value>Not applicable</value></data>
+  <data name="UniversityIdAlreadyUsed" xml:space="preserve"><value>This university ID is already in use.</value></data>
+  <data name="StepUniversityEmail" xml:space="preserve"><value>University email</value></data>
+  <data name="StepConfirmEmail" xml:space="preserve"><value>Confirm email</value></data>
+  <data name="VerificationEmailRequired" xml:space="preserve"><value>This account does not use a university email, so it needs approval from the site administrator.</value></data>
+  <data name="ConfirmEmailSent" xml:space="preserve"><value>We sent a confirmation link to your email. Check your inbox and spam folder.</value></data>
+  <data name="ResendConfirmation" xml:space="preserve"><value>Send the link again</value></data>
+  <data name="ConfirmationResent" xml:space="preserve"><value>If this account still needs confirming, a new link is on its way. You can request one every minute.</value></data>
+  <data name="EmailSendFailed" xml:space="preserve"><value>Your account was created, but the confirmation email could not be sent. Try sending the link again.</value></data>
+  <data name="RegistrationClosed" xml:space="preserve"><value>Registration is not open yet. Please contact the site administrator.</value></data>
+  <data name="ConfirmationEmailSubject" xml:space="preserve"><value>Confirm your ZU Market email</value></data>
+  <data name="ConfirmationEmailIntro" xml:space="preserve"><value>Confirm your university email to activate your ZU Market account.</value></data>
+  <data name="ConfirmationEmailAction" xml:space="preserve"><value>Confirm my email</value></data>
+  <data name="ResetEmailSubject" xml:space="preserve"><value>Reset your ZU Market password</value></data>
+  <data name="ResetEmailIntro" xml:space="preserve"><value>Use this link to choose a new password for your ZU Market account.</value></data>
+  <data name="ResetEmailAction" xml:space="preserve"><value>Reset my password</value></data>
+  <data name="EmailIgnoreNote" xml:space="preserve"><value>If you did not request this, you can ignore this email.</value></data>
+  <data name="AiDraftButton" xml:space="preserve"><value>Fill from photo</value></data>
+  <data name="AiDraftWorking" xml:space="preserve"><value>Reading your photo...</value></data>
+  <data name="AiDraftPrivacy" xml:space="preserve"><value>Your photos are sent to OpenAI to write a draft. Nothing is posted until you submit.</value></data>
+  <data name="AiDraftNoPhoto" xml:space="preserve"><value>Add a photo first.</value></data>
+  <data name="AiDraftDone" xml:space="preserve"><value>We filled the empty fields. Please check them before posting, especially the condition.</value></data>
+  <data name="AiDraftNotRecognized" xml:space="preserve"><value>We could not recognize an item in this photo. Try a clearer photo or fill in the form yourself.</value></data>
+  <data name="AiDraftFailed" xml:space="preserve"><value>The draft could not be created. You can fill in the form yourself.</value></data>
+  <data name="AiDraftLimit" xml:space="preserve"><value>You have reached today's limit for drafts. You can still fill in the form yourself.</value></data>
+  <data name="TranslatedAutomatically" xml:space="preserve"><value>Translated automatically. Show original</value></data>
+  <data name="AiSummaryTitle" xml:space="preserve"><value>AI summary</value></data>
+  <data name="AiSummarize" xml:space="preserve"><value>Summarize reports</value></data>
+  <data name="AiSummaryRefresh" xml:space="preserve"><value>Update summary</value></data>
+  <data name="AiSummaryAdviceOnly" xml:space="preserve"><value>Advice only. Check the reports yourself before deciding.</value></data>
+  <data name="AiSummaryStale" xml:space="preserve"><value>Reports changed after this summary was written.</value></data>
+  <data name="AiSummaryFailed" xml:space="preserve"><value>The summary could not be created. You can review the reports yourself.</value></data>
+  <data name="SuggestedAction" xml:space="preserve"><value>Suggested action</value></data>
+  <data name="SuggestedAction_Dismiss" xml:space="preserve"><value>Dismiss</value></data>
+  <data name="SuggestedAction_Investigate" xml:space="preserve"><value>Investigate</value></data>
+  <data name="SuggestedAction_Remove" xml:space="preserve"><value>Remove the listing</value></data>
+  <data name="BackToTop" xml:space="preserve"><value>Back to top</value></data>
+  <data name="FooterSell" xml:space="preserve"><value>Sell</value></data>
+  <data name="PromoSellEn" xml:space="preserve"><value>Sell to fellow students</value></data>
+  <data name="PromoNameAr" xml:space="preserve"><value>سوق الطلبة</value></data>
+  <data name="PromoSellAr" xml:space="preserve"><value>بِع لزملائك الطلبة</value></data>
+  <data name="StudentsOnlyNote" xml:space="preserve"><value>Sold by verified Zarqa University students</value></data>
+  <data name="FacultyIT" xml:space="preserve"><value>IT</value></data>
+  <data name="FacultyNursing" xml:space="preserve"><value>Nursing</value></data>
+  <data name="FacultyMedical" xml:space="preserve"><value>Medical</value></data>
+  <data name="FacultyLiterature" xml:space="preserve"><value>Literature</value></data>
+  <data name="FacultyDentistry" xml:space="preserve"><value>Dentistry</value></data>
+  <data name="FacultyPharmacy" xml:space="preserve"><value>Pharmacy</value></data>
+  <data name="FacultyEngineering" xml:space="preserve"><value>Engineering</value></data>
+  <data name="FacultyScience" xml:space="preserve"><value>Science</value></data>
+  <data name="FacultyBusiness" xml:space="preserve"><value>Business</value></data>
+  <data name="FacultyLaw" xml:space="preserve"><value>Law</value></data>
+  <data name="FacultyEducation" xml:space="preserve"><value>Education</value></data>
+  <data name="FacultyMedia" xml:space="preserve"><value>Media</value></data>
+  <data name="FacultyDesign" xml:space="preserve"><value>Arts and Design</value></data>
+  <data name="FacultySharia" xml:space="preserve"><value>Sharia</value></data>
+  <data name="Category_FacultyIT" xml:space="preserve"><value>Books, notes, and gear for IT students</value></data>
+  <data name="Category_FacultyNursing" xml:space="preserve"><value>Books, notes, and gear for nursing students</value></data>
+  <data name="Category_FacultyMedical" xml:space="preserve"><value>Books, notes, and gear for allied medical sciences students</value></data>
+  <data name="Category_FacultyLiterature" xml:space="preserve"><value>Books, notes, and gear for literature students</value></data>
+  <data name="Category_FacultyDentistry" xml:space="preserve"><value>Books, notes, and gear for dentistry students</value></data>
+  <data name="Category_FacultyPharmacy" xml:space="preserve"><value>Books, notes, and gear for pharmacy students</value></data>
+  <data name="Category_FacultyEngineering" xml:space="preserve"><value>Books, notes, and gear for engineering students</value></data>
+  <data name="Category_FacultyScience" xml:space="preserve"><value>Books, notes, and gear for science students</value></data>
+  <data name="Category_FacultyBusiness" xml:space="preserve"><value>Books, notes, and gear for business and economics students</value></data>
+  <data name="Category_FacultyLaw" xml:space="preserve"><value>Books, notes, and gear for law students</value></data>
+  <data name="Category_FacultyEducation" xml:space="preserve"><value>Books, notes, and gear for education students</value></data>
+  <data name="Category_FacultyMedia" xml:space="preserve"><value>Books, notes, and gear for media students</value></data>
+  <data name="Category_FacultyDesign" xml:space="preserve"><value>Books, notes, and gear for arts and design students</value></data>
+  <data name="Category_FacultySharia" xml:space="preserve"><value>Books, notes, and gear for Sharia students</value></data>
+  <data name="CreateStartAiText" xml:space="preserve"><value>Add a photo and we'll fill in the details for you. You can change anything before posting.</value></data>
+  <data name="CreateStartText" xml:space="preserve"><value>Add a photo, then fill in the details.</value></data>
+  <data name="SelectCondition" xml:space="preserve"><value>Select condition</value></data>
+  <data name="CategoryRequired" xml:space="preserve"><value>Choose a faculty or Other.</value></data>
+  <data name="ConditionRequired" xml:space="preserve"><value>Choose the item's condition.</value></data>
+  <data name="PriceRequired" xml:space="preserve"><value>Enter a price, or mark this item as free.</value></data>
+</root>

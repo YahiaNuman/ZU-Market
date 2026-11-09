@@ -1,0 +1,43 @@
+@model AdminReportsViewModel
+@{ ViewData["Title"] = L["ReviewReports"]; }
+<div class="container section">
+    <div class="section-heading"><h1>@L["ReviewReports"]</h1></div>
+    @foreach (var group in Model.Reports.GroupBy(x => x.ListingId))
+    {
+        var pending = group.Where(x => x.Status == ReportStatus.Pending).ToList();
+        Model.LatestSummaries.TryGetValue(group.Key, out var summary);
+        var current = summary?.IsCurrentFor(pending) == true;
+        <section class="report-group" id="listing-@group.Key">
+            <h2 dir="auto"><a asp-controller="Listings" asp-action="Details" asp-route-id="@group.Key">@group.First().Listing!.Title</a></h2>
+            @if (pending.Count > 0 && (summary is not null || Model.AiAvailable))
+            {
+                <div class="ai-review-box">
+                    @if (summary is not null)
+                    {
+                        <strong>@L["AiSummaryTitle"]</strong>
+                        <p dir="auto">@summary.Summary</p>
+                        <p><strong>@L["SuggestedAction"]:</strong> @L[$"SuggestedAction_{summary.SuggestedAction}"]. <span dir="auto">@summary.Reason</span></p>
+                        <small>@L["AiSummaryAdviceOnly"]</small>
+                        @if (!current) { <p>@L["AiSummaryStale"]</p> }
+                    }
+                    @if (Model.AiAvailable && !current)
+                    {
+                        <form asp-action="SummarizeReports" method="post"><input type="hidden" name="listingId" value="@group.Key" /><button class="btn btn-outline-primary btn-sm" type="submit">@(summary is null ? L["AiSummarize"] : L["AiSummaryRefresh"])</button></form>
+                    }
+                </div>
+            }
+            <div class="management-list">
+                @foreach (var report in group)
+                {
+                    <article>
+                        <div class="management-main"><span class="status-badge">@L[report.Status.ToString()]</span><p><strong>@L[report.Reason.ToString()]</strong> · @report.Reporter!.FullName</p><p dir="auto">@report.Details</p></div>
+                        @if (report.Status == ReportStatus.Pending)
+                        {
+                            <form asp-action="ResolveReport" method="post" class="management-actions"><input type="hidden" name="id" value="@report.Id" /><textarea name="notes" placeholder="@L["ResolutionNotes"]"></textarea><button class="btn btn-success btn-sm" name="dismiss" value="false">@L["Resolve"]</button><button class="btn btn-light btn-sm" name="dismiss" value="true">@L["Dismiss"]</button></form>
+                        }
+                    </article>
+                }
+            </div>
+        </section>
+    }
+</div>

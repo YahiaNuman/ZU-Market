@@ -1,0 +1,92 @@
+@model HomeViewModel
+@{
+    ViewData["Title"] = L["Home"];
+    var gridListings = Model.RecentListings;
+    string CoverUrl(Listing listing) => Url.Action("Image", "Listings", new { id = listing.Images.OrderBy(x => x.SortOrder).First().Id })!;
+    var bannerPhotos = Model.RecentListings.Where(x => x.Images.Any()).Take(4).ToList();
+}
+<section class="lead">
+    <div class="home-wide">
+        <div class="lead-top">
+            <div class="lead-panel">
+                <h1>@L["HeroTitle"]</h1>
+                <p>@L["HeroText"]</p>
+                <div class="lead-actions">
+                    <a class="btn btn-light" asp-controller="Listings" asp-action="Index">@L["BrowseListings"]</a>
+                    <a class="btn btn-success" asp-controller="Listings" asp-action="Create">@L["CreateListing"]</a>
+                </div>
+                <p class="lead-note"><svg class="icon" aria-hidden="true"><use href="#i-shield" /></svg>@L["StudentsOnlyNote"]</p>
+            </div>
+            <div class="lead-media"><video src="~/videos/zu-campus.mp4" poster="~/videos/zu-campus-poster.jpg" autoplay muted loop playsinline preload="auto" disablepictureinpicture aria-hidden="true"></video></div>
+        </div>
+        <h2 class="visually-hidden">@L["ShopByCategory"]</h2>
+        <div class="faculty-grid">
+            @foreach (var category in Model.Categories)
+            {
+                <a class="faculty-tile" asp-controller="Listings" asp-action="Index" asp-route-CategoryId="@category.Id">
+                    <span class="faculty-thumb"><svg class="icon" aria-hidden="true"><use href="#i-@(category.Slug)" /></svg></span>
+                    <span class="faculty-name">@L[category.Key]</span>
+                </a>
+            }
+        </div>
+    </div>
+</section>
+<section class="home-wide home-listings">
+    <div class="section-heading">
+        <h2>@L["RecentListings"]</h2>
+        <a asp-controller="Listings" asp-action="Index">@L["ViewAll"]</a>
+    </div>
+    @if (gridListings.Count == 0)
+    {
+        <div class="empty-state">
+            <span class="empty-illustration" aria-hidden="true"></span>
+            <h3>@L["NoListings"]</h3>
+            <p>@L["BeFirst"]</p>
+            <a class="btn btn-primary" asp-controller="Listings" asp-action="Create">@L["CreateListing"]</a>
+        </div>
+    }
+    else
+    {
+        <div class="listing-grid">
+            @foreach (var item in gridListings.Take(12))
+            {
+                <partial name="_ListingCard" model="item" />
+            }
+        </div>
+    }
+</section>
+<section class="home-wide sell-section">
+    <a class="sell-banner" dir="ltr" asp-controller="Listings" asp-action="Create">
+        <span class="sell-side" lang="en"><strong>ZU Market</strong><span class="sell-pill">@L["PromoSellEn"]</span></span>
+        <span class="sell-art" aria-hidden="true">
+            <svg class="sell-prop sell-backpack" viewBox="0 0 120 150"><path d="M42 26C42 10 78 10 78 26" fill="none" stroke="#0a3a5c" stroke-width="8"/><rect x="14" y="26" width="92" height="118" rx="26" fill="#fff"/><rect x="28" y="84" width="64" height="46" rx="10" fill="#eef4f4" stroke="#0a3a5c" stroke-width="4"/><path d="M14 66h92" stroke="#0a3a5c" stroke-width="4"/><rect x="54" y="60" width="12" height="16" rx="3" fill="#0a3a5c"/></svg>
+            <span class="sell-phone">
+                <img class="sell-phone-logo" src="~/images/brand/zu-market-symbol.png" alt="" />
+                <span class="sell-phone-grid">
+                    @foreach (var listing in bannerPhotos)
+                    {
+                        <span><img src="@CoverUrl(listing)" alt="" loading="lazy" /></span>
+                    }
+                    @for (var i = bannerPhotos.Count; i < 4; i++)
+                    {
+                        <span></span>
+                    }
+                </span>
+            </span>
+            <svg class="sell-prop sell-laptop" viewBox="0 0 190 130"><rect x="34" y="10" width="122" height="88" rx="8" fill="#0a3a5c"/><rect x="43" y="19" width="104" height="70" rx="3" fill="#eef4f4"/><path d="M12 104h166l-10 16H22z" fill="#fff"/></svg>
+        </span>
+        <span class="sell-side" lang="ar" dir="rtl"><strong>@L["PromoNameAr"]</strong><span class="sell-pill">@L["PromoSellAr"]</span></span>
+    </a>
+</section>
+@if (gridListings.Count > 12)
+{
+    <section class="home-wide home-listings">
+        <div class="listing-grid">
+            @foreach (var item in gridListings.Skip(12))
+            {
+                <partial name="_ListingCard" model="item" />
+            }
+        </div>
+        <p class="home-more"><a asp-controller="Listings" asp-action="Index">@L["ViewAll"]</a></p>
+    </section>
+}

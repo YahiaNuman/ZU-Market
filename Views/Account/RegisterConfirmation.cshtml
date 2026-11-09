@@ -1,0 +1,20 @@
+@model RegisterConfirmationViewModel
+@{ ViewData["Title"] = L["ConfirmEmail"]; }
+<div class="container page-narrow">
+    <div class="form-heading"><img class="page-brand-logo" src="~/images/brand/zu-market-logo.png" alt="@L["BrandLogoAlt"]" /><h1>@L["ConfirmYourEmail"]</h1><p>@L["ConfirmEmailText", Model.Email]</p></div>
+    <div class="status-card pending">
+        @if (!string.IsNullOrWhiteSpace(Model.DevelopmentConfirmationUrl))
+        {
+            <p class="development-note"><strong>@L["DevelopmentOnly"]</strong> @L["DevelopmentConfirmationText"]</p>
+            <a class="btn btn-primary" href="@Model.DevelopmentConfirmationUrl">@L["ConfirmEmail"]</a>
+        }
+        else
+        {
+            <p>@L["ConfirmEmailSent"]</p>
+        }
+        <form asp-action="ResendConfirmation" method="post">
+            <input type="hidden" name="email" value="@Model.Email" />
+            <button class="btn btn-outline-primary" type="submit">@L["ResendConfirmation"]</button>
+        </form>
+    </div>
+</div>

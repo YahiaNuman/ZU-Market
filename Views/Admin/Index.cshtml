@@ -1,0 +1,58 @@
+@model AdminDashboardViewModel
+@{ ViewData["Title"] = L["Administration"]; }
+<div class="page-header compact">
+    <div class="container admin-heading">
+        <img src="~/images/brand/zu-market-logo.png" alt="@L["BrandLogoAlt"]" />
+        <div><span class="eyebrow">@L["Administration"]</span><h1>@L["AdminDashboard"]</h1><p>@L["AdminDashboardText"]</p></div>
+    </div>
+</div>
+<div class="container section">
+    <div class="alert alert-secondary">
+        <strong>@L["AiProviderConfiguration"]</strong>
+        @L["AiProviderEnabledState"]: @L[Model.AiProviderEnabled ? "ConfiguredYes" : "ConfiguredNo"] ·
+        @L["AiApiKeyConfiguredState"]: @L[Model.AiApiKeyConfigured ? "ConfiguredYes" : "ConfiguredNo"] ·
+        @L["AiRequiredSettingsState"]: @L[Model.AiRequiredSettingsConfigured ? "ConfiguredYes" : "ConfiguredNo"]
+    </div>
+    @switch (Model.AiProviderAvailability)
+    {
+        case AiProviderAvailability.Ready:
+            <div class="alert alert-success"><strong>@L["AiProviderReady"]</strong> @L["AiReviewConfigured", Model.AiConfidenceThreshold.ToString("P0") ]</div>
+            break;
+        case AiProviderAvailability.MissingApiKey:
+            <div class="alert alert-warning"><strong>@L["AiProviderMissingKey"]</strong> @L["AiReviewNotConfiguredText"]</div>
+            break;
+        case AiProviderAvailability.InvalidConfiguration:
+            <div class="alert alert-warning"><strong>@L["AiProviderInvalidConfiguration"]</strong> @L["AiProviderInvalidConfigurationText"]</div>
+            break;
+        case AiProviderAvailability.ConnectionFailed:
+            <div class="alert alert-warning"><strong>@L["AiProviderUnavailable"]</strong> @L["AiProviderUnavailableText"]</div>
+            break;
+        case AiProviderAvailability.AuthenticationFailed:
+            <div class="alert alert-warning"><strong>@L["AiProviderAuthenticationFailed"]</strong> @L["AiProviderAuthenticationFailedText"]</div>
+            break;
+        case AiProviderAvailability.ProviderError:
+            <div class="alert alert-warning"><strong>@L["AiProviderError"]</strong> @L["AiProviderErrorText"]</div>
+            break;
+        case AiProviderAvailability.InvalidResponse:
+            <div class="alert alert-warning"><strong>@L["AiProviderInvalidResponse"]</strong> @L["AiProviderInvalidResponseText"]</div>
+            break;
+        case AiProviderAvailability.Disabled:
+            <div class="alert alert-secondary"><strong>@L["AiProviderDisabled"]</strong> @L["AiProviderDisabledText"]</div>
+            break;
+    }
+    <div class="admin-stats">
+        <a asp-action="Users"><strong>@Model.Users</strong><span>@L["Users"]</span></a>
+        <a asp-action="Verifications"><strong>@Model.PendingVerifications</strong><span>@L["PendingVerifications"]</span></a>
+        <a asp-action="Listings"><strong>@Model.PendingListings</strong><span>@L["PendingListings"]</span></a>
+        <a asp-action="Reports"><strong>@Model.PendingReports</strong><span>@L["PendingReports"]</span></a>
+        <div><strong>@Model.PublishedListings</strong><span>@L["PublishedListings"]</span></div>
+    </div>
+    <div class="admin-links">
+        <a asp-action="Verifications"><strong>@L["ReviewVerifications"]</strong><span>@L["ReviewVerificationsText"]</span></a>
+        <a asp-action="Listings"><strong>@L["ModerateListings"]</strong><span>@L["ModerateListingsText"]</span></a>
+        <a asp-action="Reports"><strong>@L["ReviewReports"]</strong><span>@L["ReviewReportsText"]</span></a>
+        <a asp-action="Users"><strong>@L["ManageUsers"]</strong><span>@L["ManageUsersText"]</span></a>
+        <a asp-action="History"><strong>@L["ModerationHistory"]</strong><span>@L["ModerationHistoryText"]</span></a>
+        <a asp-action="Categories"><strong>@L["ManageCategories"]</strong><span>@L["ManageCategoriesText"]</span></a>
+    </div>
+</div>

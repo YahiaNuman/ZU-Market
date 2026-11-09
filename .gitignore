@@ -1,0 +1,13 @@
+bin/
+obj/
+App_Data/
+.nuget-roaming/
+.nuget-packages/
+*.user
+appsettings.Local.json
+.env
+.vs/
+.vscode/
+.idea/
+.backup/
+.claude/
